@@ -20,7 +20,8 @@ class AdminSeeder extends Seeder
             'name' => 'Admin',
             'email' => 'admin@bookinghub.com',
             'password' => Hash::make('admin123'),
-            'role' => 'admin'
+            'role' => 'admin',
+            'phone_number' => '0878654321'
         ]);
     }
 }

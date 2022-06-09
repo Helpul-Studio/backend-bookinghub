@@ -22,6 +22,8 @@ return new class extends Migration
             $table->enum('gender',['pria', 'wanita'])->nullable();
             $table->date('date_of_birth')->nullable();
             $table->enum('role', ['admin', 'user']);
+            $table->string('phone_number');
+            $table->string('photo_profile')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

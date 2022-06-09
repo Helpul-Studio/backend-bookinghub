@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('outlet_location_longitude');
             $table->time('opening_hours');
             $table->time('closing_hours');
+            $table->string('outlet_phone');
             $table->string('instagram_link');
             $table->bigInteger('price_outlet_per_hour');
             $table->timestamps();
