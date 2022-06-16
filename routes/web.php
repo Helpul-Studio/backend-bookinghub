@@ -15,9 +15,13 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/login');
 });
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::middleware(['auth'])->group(function() {
+    Route::get('/dashboard', [App\Http\Controllers\Admin\DashboardController::class,'index']);
+});

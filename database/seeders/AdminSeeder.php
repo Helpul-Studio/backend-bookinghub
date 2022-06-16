@@ -19,7 +19,7 @@ class AdminSeeder extends Seeder
         DB::table('users')->insert([
             'name' => 'Admin',
             'email' => 'admin@bookinghub.com',
-            'password' => Hash::make('admin123'),
+            'password' => Hash::make('admin1234'),
             'role' => 'admin',
             'phone_number' => '0878654321'
         ]);
