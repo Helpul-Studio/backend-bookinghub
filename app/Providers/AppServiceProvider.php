@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Interface\OutletInterface;
 use App\Interface\UserInterface;
+use App\Repository\OutletRepository;
 use Illuminate\Support\ServiceProvider;
 use App\Repository\UserRepository;
 
@@ -17,6 +19,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(UserInterface::class, UserRepository::class);
+        $this->app->bind(OutletInterface::class, OutletRepository::class);
     }
 
     /**
