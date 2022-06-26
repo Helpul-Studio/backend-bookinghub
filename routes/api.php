@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\V1\OutletController;
+use App\Http\Controllers\API\V1\OutletRoomController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,6 +19,11 @@ Route::get('/outlet', [OutletController::class, 'index']);
 Route::post('/outlet', [OutletController::class, 'store']);
 Route::put('/outlet/{id}', [OutletController::class, 'update']);
 Route::delete('/outlet/{id}', [OutletController::class, 'destroy']);
+
+Route::get('/outlet_room', [OutletRoomController::class, 'index']);
+Route::post('/outlet_room', [OutletRoomController::class, 'store']);
+Route::put('/outlet_room/{id}', [OutletRoomController::class, 'update']);
+Route::delete('/outlet_room/{id}', [OutletRoomController::class, 'destroy']);
 
 
 

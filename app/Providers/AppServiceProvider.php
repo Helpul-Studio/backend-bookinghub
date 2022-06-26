@@ -3,8 +3,10 @@
 namespace App\Providers;
 
 use App\Interface\OutletInterface;
+use App\Interface\OutletRoomInterface;
 use App\Interface\UserInterface;
 use App\Repository\OutletRepository;
+use App\Repository\OutletRoomRepository;
 use Illuminate\Support\ServiceProvider;
 use App\Repository\UserRepository;
 
@@ -20,6 +22,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->bind(UserInterface::class, UserRepository::class);
         $this->app->bind(OutletInterface::class, OutletRepository::class);
+        $this->app->bind(OutletRoomInterface::class, OutletRoomRepository::class);
     }
 
     /**
