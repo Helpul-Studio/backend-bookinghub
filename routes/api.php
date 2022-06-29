@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\V1\OutletController;
+use App\Http\Controllers\API\V1\OutletFacilityController;
 use App\Http\Controllers\API\V1\OutletRoomController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,7 +25,6 @@ Route::get('/outlet_room', [OutletRoomController::class, 'index']);
 Route::post('/outlet_room', [OutletRoomController::class, 'store']);
 Route::put('/outlet_room/{id}', [OutletRoomController::class, 'update']);
 Route::delete('/outlet_room/{id}', [OutletRoomController::class, 'destroy']);
-
 
 
 Route::post('/register-user', [\App\Http\Controllers\API\V1\AuthController::class, 'register']);

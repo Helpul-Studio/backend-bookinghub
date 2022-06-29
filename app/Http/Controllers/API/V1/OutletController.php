@@ -5,8 +5,7 @@ namespace App\Http\Controllers\API\V1;
 use App\Http\Controllers\Controller;
 use App\Interface\OutletInterface;
 use App\Http\Requests\OutletRequest;
-use App\Models\OutletRoom;
-use Illuminate\Support\Facades\Request;
+
 
 class OutletController extends Controller
 {

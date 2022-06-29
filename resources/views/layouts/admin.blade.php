@@ -93,7 +93,7 @@
         </div>
     <![endif]-->
     <!-- Warning Section Ends -->
-
+    @include('includes.footer')
     <!-- Required Js -->
     @include('includes.script')
 

@@ -12,6 +12,8 @@ class OutletFacility extends Model
     protected $primaryKey = 'id_outlet_facility';
 
     protected $fillable = [
-        'id_outlet', 'icon_outlet_facility', 'description_outlet_facility'
+        'id_outlet', 
+        'icon_outlet_facility', 
+        'description_outlet_facility'
     ];
 }

@@ -43,8 +43,6 @@ class UserRepository implements UserInterface{
 
     public function register(Request $data)
     {
-
-
         if($data){
             User::create([
                 'name' => $data['name'],
@@ -61,6 +59,11 @@ class UserRepository implements UserInterface{
     }
 
     public function loginOtp(Request $request)
+    {
+        
+    }
+
+    public function login()
     {
         
     }
