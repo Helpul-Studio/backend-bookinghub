@@ -12,6 +12,7 @@ class ImageOutlet extends Model
     protected $primaryKey = 'id_image_outlet';
 
     protected $fillable = [
-        'id_outlet', 'photo_outlet' 
+        'id_outlet', 
+        'photo_outlet' 
     ];
 }

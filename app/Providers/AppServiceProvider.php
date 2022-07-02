@@ -6,6 +6,7 @@ use App\Interface\OutletFacilityInterface;
 use App\Interface\OutletInterface;
 use App\Interface\OutletRoomInterface;
 use App\Interface\UserInterface;
+use App\Models\OutletFacility;
 use App\Repository\OutletFacilityRepository;
 use App\Repository\OutletRepository;
 use App\Repository\OutletRoomRepository;

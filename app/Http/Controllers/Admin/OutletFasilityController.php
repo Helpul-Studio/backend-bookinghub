@@ -1,18 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\API\V1;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Interface\OutletInterface;
-use App\Http\Requests\OutletRequest;
+use App\Http\Requests\OutletFasilityRequest;
+use App\Interface\OutletFasilityInterface;
+use App\Repository\OutletFasilityRepository;
+use Illuminate\Http\Request;
 
-
-class OutletController extends Controller
+class OutletFasilityController extends Controller
 {
-    public $outlet;
-    public function __construct(OutletInterface $outlet)
+    public $outletFasility;
+
+    public function __construct(OutletFasilityRepository $outletFasility)
     {
-        $this->outlet = $outlet;
+        $this->outletFasility = $outletFasility;
     }
     /**
      * Display a listing of the resource.
@@ -21,7 +23,7 @@ class OutletController extends Controller
      */
     public function index()
     {
-        return $this->outlet->index();
+        return $this->outletFasility->index();
     }
 
     /**
@@ -31,7 +33,7 @@ class OutletController extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -40,9 +42,9 @@ class OutletController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(OutletRequest $request)
+    public function store(OutletFasilityRequest $request)
     {
-        return $this->outlet->store($request);
+        return $this->outletFasility->store($request);
     }
 
     /**
@@ -51,9 +53,9 @@ class OutletController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        return $this->outletFasility->show();
     }
 
     /**
@@ -64,7 +66,7 @@ class OutletController extends Controller
      */
     public function edit($id)
     {
-        
+        //
     }
 
     /**
@@ -74,9 +76,9 @@ class OutletController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(OutletRequest $request, $id)
+    public function update(OutletFasilityRequest $request, $id)
     {
-        return $this->outlet->update($id, $request);
+        return $this->outletFasility->update($id, $request);
     }
 
     /**
@@ -87,6 +89,6 @@ class OutletController extends Controller
      */
     public function destroy($id)
     {
-        return $this->outlet->destroy($id);
+        return $this->outletFasility->destroy($id);
     }
 }

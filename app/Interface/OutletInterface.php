@@ -1,13 +1,14 @@
 <?php
 namespace App\Interface;
 
-use App\Http\Requests\OutletRequest;
 use Illuminate\Http\Request;
 
 interface OutletInterface {
     public function index();
 
     public function store(Request $request);
+
+    public function show();
 
     public function update($id, Request $request);
 
