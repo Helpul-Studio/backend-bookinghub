@@ -1,11 +1,9 @@
 <?php
 namespace App\Repository;
 
-use App\Http\Requests\OutletRoomRequest;
 use App\Interface\OutletRoomInterface;
 use App\Models\OutletRoom;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class OutletRoomRepository implements OutletRoomInterface {
     public function index()
@@ -21,15 +19,26 @@ class OutletRoomRepository implements OutletRoomInterface {
             'outlet_room_name' => $request->outlet_room_name,
             'outlet_room_status' => $request->outlet_room_status
         ]);
+
+        return response()->json([
+            'status' => true
+        ]);
     }
 
     public function show()
     {
         $outletRoom = OutletRoom::all();
         
-        return json_encode([
+        return response()->json([
             'data' => $outletRoom
         ]);
+    }
+
+    public function edit($id)
+    {
+        $outletRoom = OutletRoom::where('id_outlet_room', '=', $id)->first();
+
+        return response()->json($outletRoom);
     }
 
     public function update($id, Request $request)
@@ -37,6 +46,10 @@ class OutletRoomRepository implements OutletRoomInterface {
         $outletRoom = OutletRoom::findOrFail($id);
 
         $outletRoom->update($request->all());
+
+        return response()->json([
+            'status' => true
+        ]);
         
     }
 
@@ -44,5 +57,9 @@ class OutletRoomRepository implements OutletRoomInterface {
     {
         $outletRoom = OutletRoom::findOrFail($id);
         $outletRoom->delete();
+
+        return response()->json([
+            'status' => true
+        ]);
     }
 }

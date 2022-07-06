@@ -23,10 +23,12 @@ Route::post('/add-outlets', [App\Http\Controllers\Admin\OutletController::class,
 Route::put('/update-outlets/{id}', [App\Http\Controllers\Admin\OutletController::class, 'update']);
 Route::delete('/delete-outlets/{id}', [App\Http\Controllers\Admin\OutletController::class, 'destroy']);
 
-Route::get('/outlet_room', [OutletRoomController::class, 'index']);
-Route::post('/outlet_room', [OutletRoomController::class, 'store']);
-Route::put('/outlet_room/{id}', [OutletRoomController::class, 'update']);
-Route::delete('/outlet_room/{id}', [OutletRoomController::class, 'destroy']);
+Route::get('/outlets-room', [OutletRoomController::class, 'index']);
+Route::get('/data-outlets-room', [OutletRoomController::class, 'show']);
+Route::get('/get-outlets-room/{id}', [OutletRoomController::class, 'edit']);
+Route::post('/add-outlets-room', [OutletRoomController::class, 'store']);
+Route::put('/update-outlets-room/{id}', [OutletRoomController::class, 'update']);
+Route::delete('/delete-outlets-room/{id}', [OutletRoomController::class, 'destroy']);
 
 Route::get('/outlets-facility', [OutletFasilityController::class, 'index']);
 Route::get('/data-outlets-facility', [OutletFasilityController::class, 'show']);

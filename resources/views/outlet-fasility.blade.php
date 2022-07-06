@@ -1,9 +1,5 @@
 @extends('layouts.admin')
 
-@push('scripts')
-    <script src="{{url('admin/assets/js/pages/tbl-datatable-custom.js')}}"></script>
-@endpush
-
 @section('content')
 <!-- [ Main Content ] start -->
 <section class="pcoded-main-container">
@@ -36,7 +32,7 @@
                             <div class="col-sm-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h5>HTML5 Export Button</h5>
+                                        <h5>Outlet Facility</h5>
                                     </div>
                                     <div class="card-block">
                                         <p>This example demonstrates these four button types with their default options. The other examples in this section demonstrate some of the options available.</p>
@@ -57,24 +53,6 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                    <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
                                                 </tbody>
                                                 <tfoot>
                                                     <tr>
@@ -109,7 +87,7 @@
                 <button type="button" class="close" data-dismiss="modal" id="closeButton" aria-hidden="true">×</button>
             </div>
             <div class="modal-body">
-                <form id="formAddOutlet" method="POST">
+                <form id="formAddOutletFasility" method="POST">
                     <input type="hidden" name="id" id="id">
                     <div class="form-group">
                         <input type="text" class="form-control" id="NameOutletFacility" placeholder="Enter NameOutletFacility" name="NameOutletFacility">

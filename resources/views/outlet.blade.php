@@ -32,10 +32,9 @@
                             <div class="col-sm-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h5>HTML5 Export Button</h5>
+                                        <h5>Outlet</h5>
                                     </div>
                                     <div class="card-block">
-                                        <p>This example demonstrates these four button types with their default options. The other examples in this section demonstrate some of the options available.</p>
                                         <div class="text-right">
                                             <a href="#" class="btn btn-info my-2" id="addOutlet">Add Outlet</a>
                                         </div>
@@ -58,48 +57,6 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td>Tiger Nixon</td>
-                                                        <td>System Architect</td>
-                                                        <td>Edinburgh</td>
-                                                        <td>61</td>
-                                                        <td>2011/04/25</td>
-                                                        <td>$320,800</td>
-                                                        <td>$320,800</td>
-                                                        <td>$320,800</td>
-                                                        <td>$320,800</td>
-                                                        <td>$320,800</td>
-                                                        <td>$320,800</td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Garrett Winters</td>
-                                                        <td>Accountant</td>
-                                                        <td>Tokyo</td>
-                                                        <td>63</td>
-                                                        <td>63</td>
-                                                        <td>63</td>
-                                                        <td>63</td>
-                                                        <td>2011/07/25</td>
-                                                        <td>2011/07/25</td>
-                                                        <td>2011/07/25</td>
-                                                        <td>$170,750</td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Ashton Cox</td>
-                                                        <td>Junior Technical Author</td>
-                                                        <td>San Francisco</td>
-                                                        <td>66</td>
-                                                        <td>2009/01/12</td>
-                                                        <td>2009/01/12</td>
-                                                        <td>2009/01/12</td>
-                                                        <td>2009/01/12</td>
-                                                        <td>2009/01/12</td>
-                                                        <td>2009/01/12</td>
-                                                        <td>$86,000</td>
-                                                        <td></td>
-                                                    </tr>
                                                 </tbody>
                                                 <tfoot>
                                                     <tr>
@@ -115,7 +72,6 @@
                                                         <th>Created At</th>
                                                         <th>Updated At</th>
                                                         <th>Action</th>
-                                                        <td></td>
                                                     </tr>
                                                 </tfoot>
                                             </table>
@@ -142,16 +98,16 @@
             </div>
             <div class="modal-body">
                 <form id="formAddOutlet" method="POST">
-                    <input type="hidden" name="id" id="id">
+                    <input type="hidden" name="id_outlet" id="id_outlet">
                     <div class="form-group">
-                        <input type="text" class="form-control" id="NameOutlet" placeholder="Enter NameOutlet" name="NameOutlet">
-                        <input type="text" class="form-control" id="OutletLocationLatitude" placeholder="Enter Location Latitude" name="OutletLocationLatitude">
-                        <input type="text" class="form-control" id="OutletLocationLongtitude" placeholder="Enter Location Longtitude" name="OutletLocationLongtitude"> </
-                        <input type="text" class="form-control" id="OpeningHours" placeholder="Enter Opening Hours" name="OpeningHours">
-                        <input type="text" class="form-control" id="ClosingHours" placeholder="Enter Closing Hours" name="ClosingHours">
-                        <input type="text" class="form-control" id="OutletPhone" placeholder="Enter OutletPhone" name="OutletPhone">
-                        <input type="text" class="form-control" id="InstagramLink" placeholder="Enter InstagramLink" name="InstagramLink">
-                        <input type="text" class="form-control" id="PricePerHours" placeholder="Enter Price Per Hours" name="PricePerHours">
+                        <input type="text" class="form-control" id="outlet_name" placeholder="Enter outlet_name" name="outlet_name">
+                        <input type="text" class="form-control" id="outlet_location_latitude" placeholder="Enter Location Latitude" name="outlet_location_latitude">
+                        <input type="text" class="form-control" id="outlet_location_longitude" placeholder="Enter Location Longtitude" name="outlet_location_longitude">
+                        <input type="text" class="form-control" id="opening_hours" placeholder="Enter Opening Hours" name="opening_hours">
+                        <input type="text" class="form-control" id="closing_hours" placeholder="Enter Closing Hours" name="closing_hours">
+                        <input type="text" class="form-control" id="outlet_phone" placeholder="Enter Outlet Phone" name="outlet_phone">
+                        <input type="text" class="form-control" id="instagram_link" placeholder="Enter instagram Link" name="instagram_link">
+                        <input type="text" class="form-control" id="price_outlet_per_hour" placeholder="Enter Price Per Hours" name="price_outlet_per_hour">
                     </div>
                     <div class="text-right">
                         <button type="submit" id="submitButton" class="btn btn-success waves-effect waves-light mr-2">Submit</button>
@@ -165,5 +121,6 @@
 
 @push('outlet')
     <script src="{{url('admin/assets/js/pages/outlet.js')}}"></script>
+    <script src="{{url('admin/assets/js/pages/outlet-crud.js')}}"></script>
     <script src="{{url('admin/assets/plugins/data-tables/js/datatables.min.js')}}"></script>
 @endpush

@@ -66,7 +66,7 @@ class OutletFasilityController extends Controller
      */
     public function edit($id)
     {
-        //
+        return $this->outletFasility->edit($id);
     }
 
     /**
