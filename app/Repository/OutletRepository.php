@@ -9,16 +9,12 @@ use Illuminate\Http\Request;
 class OutletRepository implements OutletInterface {
     public function index()
     {
-        $outlet = Outlet::all();
-        return response()->json([
-            'message' => 'Success get data',
-            'data' => $outlet
-        ]);
+        return view('outlet');
     }
 
     public function store(Request $request)
     {
-        $outlet = Outlet::create([
+        Outlet::create([
             'outlet_name' => $request->outlet_name,
             'outlet_location_latitude' => $request->outlet_location_latitude,
             'outlet_location_longitude' => $request->outlet_location_longitude,
@@ -28,9 +24,16 @@ class OutletRepository implements OutletInterface {
             'instagram_link' => $request->instagram_link,
             'price_outlet_per_hour' => $request->price_outlet_per_hour
         ]);
+    }
+
+    public function show()
+    {
+        $outlet = Outlet::all();
+        // return json_encode([
+        //     'data' => $outlet
+        // ]);
 
         return response()->json([
-            'message' => 'Success Store Data',
             'data' => $outlet
         ]);
     }
@@ -40,11 +43,6 @@ class OutletRepository implements OutletInterface {
         $outlet = Outlet::findOrFail($id);
 
         $outlet->update($request->all());
-
-        return response()->json([
-            'message' => 'Success Update Data',
-            'data' => $outlet
-        ]);
     }
 
     public function destroy($id)
@@ -52,9 +50,5 @@ class OutletRepository implements OutletInterface {
         $outlet = Outlet::findOrFail($id);
 
         $outlet->delete();
-
-        return response()->json([
-            'message' => 'Data Success Delete'
-        ]);
     }
 }

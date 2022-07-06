@@ -3,7 +3,7 @@ namespace App\Interface;
 
 use Illuminate\Http\Request;
 
-interface OutletInterface {
+interface OutletFasilityInterface {
     public function index();
 
     public function store(Request $request);

@@ -1,9 +1,10 @@
 <?php
+
 namespace App\Interface;
 
 use Illuminate\Http\Request;
 
-interface OutletInterface {
+interface OutletImageInterface {
     public function index();
 
     public function store(Request $request);

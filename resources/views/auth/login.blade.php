@@ -38,7 +38,7 @@
                 </div>
             </div>
             <div class="col-lg-4 align-items-stret h-100 align-items-center d-flex justify-content-center">
-                <form action="{{ route("login") }}" method="POST">
+                <form action="{{ route('login') }}" method="POST">
                     @csrf
                     <div class=" auth-content text-center">
                         <div class="mb-4">

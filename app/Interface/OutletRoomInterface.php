@@ -1,11 +1,12 @@
 <?php
 namespace App\Interface;
 
+use App\Http\Requests\OutletRoomRequest;
 use Illuminate\Http\Request;
 
-interface OutletInterface {
+interface OutletRoomInterface {
     public function index();
-
+    
     public function store(Request $request);
 
     public function show();
