@@ -99,9 +99,13 @@
                         <div class="pro-head">
                             <img src="assets/images/user/avatar-1.jpg" class="img-radius" alt="User-Profile-Image">
                             <span>John Doe</span>
-                            <a href="auth-signin.html" class="dud-logout" title="Logout">
+                            <a href="{{ route('logout') }}" class="dud-logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 <i class="feather icon-log-out"></i>
                             </a>
+                            
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
                         </div>
                         <ul class="pro-body">
                             <li><a href="#!" class="dropdown-item"><i class="feather icon-settings"></i> Settings</a></li>

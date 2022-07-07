@@ -14,16 +14,8 @@
                 <li class="nav-item pcoded-menu-caption">
                     <label>Navigation</label>
                 </li>
-                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu active pcoded-trigger">
-                    <a href="admin/#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Dashboard</span></a>
-                    <ul class="pcoded-submenu">
-                        <li class=""><a href="admin/index.html" class="">Default</a></li>
-                        <li class=""><a href="admin/dashboard-ecommerce.html" class="">Ecommerce</a></li>
-                        <li class=""><a href="admin/dashboard-crm.html" class="">CRM</a></li>
-                        <li class="active"><a href="admin/dashboard-analytics.html" class="">Analytics</a></li>
-                        <li class=""><a href="admin/dashboard-crypto.html" class="">Crypto<span class="pcoded-badge label label-danger">NEW</span></a></li>
-                        <li class=""><a href="admin/dashboard-project.html" class="">Project</a></li>
-                    </ul>
+                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item  active pcoded-trigger">
+                    <a href="{{url('dashboard')}}" class="nav-link"><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Dashboard</span></a>
                 </li>
                 <li data-username="Vertical Horizontal Box Layout RTL fixed static collapse menu color icon dark" class="nav-item pcoded-hasmenu">
                     <a href="admin/#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-layout"></i></span><span class="pcoded-mtext">Page layouts</span></a>
