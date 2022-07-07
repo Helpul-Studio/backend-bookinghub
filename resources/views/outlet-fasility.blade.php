@@ -37,7 +37,7 @@
                                     <div class="card-block">
                                         <p>This example demonstrates these four button types with their default options. The other examples in this section demonstrate some of the options available.</p>
                                         <div class="text-right">
-                                            <a href="#" class="btn btn-info my-2" id="addOutlet">Add Outlet</a>
+                                            <a href="#" class="btn btn-info my-2" id="addOutletFacility">Add Outlet</a>
                                         </div>
                                         <div class="table-responsive">
                                             <table id="key-act-button" class="display table nowrap table-striped table-hover" style="width:100%">
@@ -88,12 +88,11 @@
             </div>
             <div class="modal-body">
                 <form id="formAddOutletFasility" method="POST">
-                    <input type="hidden" name="id" id="id">
+                    <input type="hidden" name="id_outlet_facility" id="id_outlet_facility">
                     <div class="form-group">
-                        <input type="text" class="form-control" id="NameOutletFacility" placeholder="Enter NameOutletFacility" name="NameOutletFacility">
-                        <input type="text" class="form-control" id="IdOutlet" placeholder="Enter IdOutlet" name="IdOutlet">
-                        <input type="file" class="form-control" id="IconOutletFacility" placeholder="Enter IconOutletFacility" name="IconOutletFacility"> 
-                        <input type="text" class="form-control" id="Description" placeholder="Enter Description" name="Description">                        
+                        <input type="text" class="form-control" id="id_outlet" placeholder="Enter Id Outlet" name="id_outlet">
+                        <input type="file" class="form-control" id="icon_outlet_facility" placeholder="Enter icon Outlet Facility" name="icon_outlet_facility"> 
+                        <input type="text" class="form-control" id="description_outlet_facility" placeholder="Enter description Outlet Facility" name="description_outlet_facility">                        
                     </div>
                     <div class="text-right">
                         <button type="submit" id="submitButton" class="btn btn-success waves-effect waves-light mr-2">Submit</button>
@@ -107,5 +106,7 @@
 
 @push('outlet-fasility')
     <script src="{{url('admin/assets/js/pages/outlet-fasility.js')}}"></script>
+    <script src="{{url('admin/assets/js/pages/outlet-facility-crud.js')}}"></script>
+    
     <script src="{{url('admin/assets/plugins/data-tables/js/datatables.min.js')}}"></script>
 @endpush

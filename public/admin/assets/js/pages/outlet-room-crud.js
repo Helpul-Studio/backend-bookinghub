@@ -54,7 +54,6 @@ $(document).ready(function() {
             $('#outlet_room_name').val(data.outlet_room_name);
             $('#outlet_room_status').val(data.outlet_room_status);
         });
-        console.log(id);
     });
 
     $(document).on('click', '#closeButton', function(e){
@@ -72,7 +71,6 @@ $(document).ready(function() {
             outlet_room_name: $('#outlet_room_name').val(),
             outlet_room_status: $('#outlet_room_status').val(),
         }
-        console.log(formData);
 
         if(formData.id_outlet_room){
             $.ajax({

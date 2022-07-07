@@ -16,110 +16,111 @@ $(document).ready(function() {
         // ],
         processing: true,
         lengthMenu : [10,50,100],
-        ajax : "data-outlets-room",
+        ajax : "/data-outlets-facility",
         columnDefs : [
             { responsivePriority: 1, targets: -1 }
         ],
         columns : [
-            {data : "id_outlet_room"},
+            {data : "id_outlet_facility"},
             {data : "id_outlet"},
-            {data : "outlet_room_number"},
-            {data : "outlet_room_name"},
-            {data : "outlet_room_status"},
-            {data : "created_at"},
-            {data : "updated_at"},
-            {data : "id_outlet_room",
-                render: function(data, type, row) {
-                    return `<a id="editOutletRoom" class=" btn btn-md btn-success" data-id='`+data +`' style="color: white;"> Edit</a>
-                            <a id="deleteOutletRoom" class=" btn btn-md btn-danger" data-id='`+data +`' style="color: white;"> Delete</a>`;
+            {data : "icon_outlet_facility",
+                render: function(data, type, row){
+                    return '<img src="' + data + '" height="50" width="50"/>';
                 }
             },
-        ]
+            {data : "description_outlet_facility"},
+            {data : "created_at"},
+            {data : "updated_at"},
+            {data : "id_outlet_facility",
+                render: function(data, type, row) {
+                    return `<a id="editOutletFacility" class=" btn btn-md btn-success" data-id='`+data +`' style="color: white;"> Edit</a>
+                            <a id="deleteOutletFacility" class=" btn btn-md btn-danger" data-id='`+data +`' style="color: white;"> Delete</a>`;
+                }
+            },
+        ],
     });
 
-    $('#addOutletRoom').click(function(){
-        $('#formAddOutletRoom').trigger('reset');
-        $('#modalOutletRoom').modal('show');
-        $('#id_outlet_room').val('');
+    $('#addOutletFacility').click(function(){
+        $('#formAddOutletFacility').trigger('reset');
+        $('#modalOutletFacility').modal('show');
+        $('#id_outlet_facility').val('');
     });
 
-    $(document).on('click', '#editOutletRoom', function(e){
+    $(document).on('click', '#editOutletFacility', function(e){
         e.preventDefault();
         var id = $(this).attr("data-id");
-        $.get('/get-outlets-room/'+id, function(data){
-            $('#modalOutletRoom').modal('show');
-            $('#id_outlet_room').val(data.id_outlet_room);
+        $.get('/get-outlets-facility/'+id, function(data){
+            $('#modalOutletFacility').modal('show');
+            $('#id_outlet_facility').val(data.id_outlet_facility);
             $('#id_outlet').val(data.id_outlet);
-            $('#outlet_room_number').val(data.outlet_room_number);
-            $('#outlet_room_name').val(data.outlet_room_name);
-            $('#outlet_room_status').val(data.outlet_room_status);
+            $('#icon_outlet_facility').val(data.icon_outlet_facility);
+            $('#description_outlet_facility').val(data.description_outlet_facility);
         });
-        console.log(id);
     });
 
     $(document).on('click', '#closeButton', function(e){
         e.preventDefault();
-        $('#formAddOutletRoom').trigger("reset");
+        $('#formAddOutletFacility').trigger("reset");
     });
 
     $('#submitButton').click(function(e){
         e.preventDefault();
         
         var formData = {
-            id_outlet_room: $('#id_outlet_room').val(),
+            id_outlet_facility: $('#id_outlet_facility').val(),
             id_outlet: $('#id_outlet').val(),
-            outlet_room_number: $('#outlet_room_number').val(),
-            outlet_room_name: $('#outlet_room_name').val(),
-            outlet_room_status: $('#outlet_room_status').val(),
+            icon_outlet_facility: $('#icon_outlet_facility').val(),
+            description_outlet_facility: $('#description_outlet_facility').val(),
         }
+
         console.log(formData);
 
-        if(formData.id_outlet_room){
+        if(formData.id_outlet_facility){
             $.ajax({
                 data: formData,
-                url: "update-outlets-room/"+formData.id_outlet_room,
+                url: "update-outlets-facility/"+formData.id_outlet_facility,
                 type: "PUT",
                 dataType: "json",
                 success : function(data){
-                    $('#formAddOutletRoom').trigger("reset");
-                    $('#modalOutletRoom').trigger("reset");
-                    $('#modalOutletRoom').modal('hide');
+                    $('#formAddOutletFacility').trigger("reset");
+                    $('#modalOutletFacility').trigger("reset");
+                    $('#modalOutletFacility').modal('hide');
                     $('#key-act-button').DataTable().ajax.reload();
                     Swal.fire("Successfull", data.message, "success");
                 },
                 error : function(data){
                     console.log('Error : ', data);
-                    $('#formAddOutletRoom').trigger("reset");
-                    $('#modalOutletRoom').modal('hide');
-                    $('#modalOutletRoom').trigger("reset");
+                    $('#formAddOutletFacility').trigger("reset");
+                    $('#modalOutletFacility').modal('hide');
+                    $('#modalOutletFacility').trigger("reset");
                     Swal.fire("Wrong request", data.responseJSON.message, "error");
                 }
             });
         } else {
             $.ajax({
                 data: formData,
-                url: "/add-outlets-room",
+                url: "/add-outlets-facility",
                 type: "POST",
                 dataType: "json",
                 success : function(data){
-                    $('#formAddOutletRoom').trigger("reset");
-                    $('#modalOutletRoom').trigger("reset");
-                    $('#modalOutletRoom').modal("hide");
+                    $('#formAddOutletFacility').trigger("reset");
+                    $('#modalOutletFacility').trigger("reset");
+                    $('#modalOutletFacility').modal("hide");
                     $('#key-act-button').DataTable().ajax.reload();
                     Swal.fire("Successfull", data.message,"success");
                 },
                 error : function(data){
                     console.log('Error : ', data);
-                    $('#formAddOutletRoom').trigger("reset");
-                    $('#modalOutletRoom').modal('hide');
-                    $('#modalOutletRoom').trigger("reset");
+                    $('#formAddOutletFacility').trigger("reset");
+                    $('#modalOutletFacility').modal('hide');
+                    $('#modalOutletFacility').trigger("reset");
                     Swal.fire("Wrong request", data.responseJSON.message, "error");
                 }
             })
         }
     });
 
-    $(document).on('click', '#deleteOutletRoom', function(e){
+    $(document).on('click', '#deleteOutletFacility', function(e){
         e.preventDefault();
         var id = $(this).attr('data-id');
         Swal.fire({
@@ -132,7 +133,7 @@ $(document).ready(function() {
         }).then((result)=> {
             if(result.value){
                 $.ajax({
-                    url: '/delete-outlets-room/'+id,
+                    url: '/delete-outlets-facility/'+id,
                     type: "DELETE",
                     success : function(data){
                         if(data.status === true){

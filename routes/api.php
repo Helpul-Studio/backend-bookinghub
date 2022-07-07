@@ -32,6 +32,7 @@ Route::delete('/delete-outlets-room/{id}', [OutletRoomController::class, 'destro
 
 Route::get('/outlets-facility', [OutletFasilityController::class, 'index']);
 Route::get('/data-outlets-facility', [OutletFasilityController::class, 'show']);
+Route::get('/get-outlets-facility/{id}', [OutletFasilityController::class, 'edit']);
 Route::post('/add-outlets-facility', [OutletFasilityController::class, 'store']);
 Route::put('/update-outlets-facility/{id}', [OutletFasilityController::class, 'update']);
 Route::delete('/delete-outlets-facility/{id}', [OutletFasilityController::class, 'destroy']);

@@ -3,7 +3,9 @@ namespace App\Repository;
 
 use App\Interface\OutletFasilityInterface;
 use App\Models\OutletFacility;
+use Illuminate\Contracts\Cache\Store;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class OutletFasilityRepository implements OutletFasilityInterface {
     public function index()
@@ -13,9 +15,12 @@ class OutletFasilityRepository implements OutletFasilityInterface {
 
     public function store(Request $request)
     {
+        $storeImage = Storage::put('public/icon', $request->file('icon_outlet_facility'));
+        $storeImageUrl = Storage::url($storeImage, 'public/icon');
+
         OutletFacility::create([
             'id_outlet' => $request->id_outlet, 
-            'icon_outlet_facility' => $request->icon_outlet_facility, 
+            'icon_outlet_facility' => $storeImageUrl,
             'description_outlet_facility' => $request->description_outlet_facility
         ]);
 
