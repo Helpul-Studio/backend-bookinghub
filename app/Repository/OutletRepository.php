@@ -24,18 +24,25 @@ class OutletRepository implements OutletInterface {
             'instagram_link' => $request->instagram_link,
             'price_outlet_per_hour' => $request->price_outlet_per_hour
         ]);
+
+        return response()->json([
+            'status' => true
+        ]);
     }
 
     public function show()
     {
         $outlet = Outlet::all();
-        // return json_encode([
-        //     'data' => $outlet
-        // ]);
-
+        
         return response()->json([
             'data' => $outlet
         ]);
+    }
+
+    public function edit($id)
+    {
+        $outlet = Outlet::where('id_outlet', "=", $id)->first();
+        return response()->json($outlet);
     }
 
     public function update($id, Request $request)
@@ -43,6 +50,10 @@ class OutletRepository implements OutletInterface {
         $outlet = Outlet::findOrFail($id);
 
         $outlet->update($request->all());
+
+        return response()->json([
+            'status' => true
+        ]);
     }
 
     public function destroy($id)
@@ -50,5 +61,9 @@ class OutletRepository implements OutletInterface {
         $outlet = Outlet::findOrFail($id);
 
         $outlet->delete();
+
+        return response()->json([
+            'status' => true
+        ]);
     }
 }

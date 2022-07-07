@@ -65,7 +65,7 @@ class OutletImageController extends Controller
      */
     public function edit($id)
     {
-        //
+        return $this->outletImage->edit($id);
     }
 
     /**

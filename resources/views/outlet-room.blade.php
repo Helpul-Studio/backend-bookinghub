@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @push('scripts')
-    <script src="{{url('admin/assets/js/pages/tbl-datatable-custom.js')}}"></script>
+<script src="{{url('admin/assets/js/pages/tbl-datatable-custom.js')}}"></script>
 @endpush
 
 @section('content')
@@ -36,12 +36,12 @@
                             <div class="col-sm-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h5>HTML5 Export Button</h5>
+                                        <h5>OutletRoom</h5>
                                     </div>
                                     <div class="card-block">
                                         <p>This example demonstrates these four button types with their default options. The other examples in this section demonstrate some of the options available.</p>
                                         <div class="text-right">
-                                            <a href="#" class="btn btn-info my-2" id="addOutlet">Add Outlet</a>
+                                            <a href="#" class="btn btn-info my-2" id="addOutletRoom">Add Outlet Room</a>
                                         </div>
                                         <div class="table-responsive">
                                             <table id="key-act-button" class="display table nowrap table-striped table-hover" style="width:100%">
@@ -58,26 +58,6 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                    <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
                                                 </tbody>
                                                 <tfoot>
                                                     <tr>
@@ -105,7 +85,7 @@
         </div>
     </div>
 </section>
-<div class="modal fade" id="modalOutletFacility" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade" id="modalOutletRoom" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -113,13 +93,17 @@
                 <button type="button" class="close" data-dismiss="modal" id="closeButton" aria-hidden="true">×</button>
             </div>
             <div class="modal-body">
-                <form id="formAddOutlet" method="POST">
-                    <input type="hidden" name="id" id="id">
+                <form id="formAddOutletRoom" method="POST">
+                    <input type="hidden" name="id_outlet_room" id="id_outlet_room">
                     <div class="form-group">
-                        <input type="text" class="form-control" id="IdOutlet" placeholder="Enter IdOutlet" name="IdOutlet">
-                        <input type="text" class="form-control" id="OutletRoomNumber" placeholder="Enter OutletRoomNumber" name="OutletRoomNumber"> 
-                        <input type="text" class="form-control" id="OutletRoomName" placeholder="Enter OutletRoomName" name="OutletRoomName"> 
-                        <input type="text" class="form-control" id="Status" placeholder="Enter Status" name="Status">                        
+                        <input type="text" class="form-control" id="id_outlet" placeholder="Enter IdOutlet" name="id_outlet">
+                        <input type="text" class="form-control" id="outlet_room_number" placeholder="Enter OutletRoomNumber" name="outlet_room_number">
+                        <input type="text" class="form-control" id="outlet_room_name" placeholder="Enter OutletRoomName" name="outlet_room_name">
+                        <input type="text" class="form-control" list="datalistOptions" id="outlet_room_status" placeholder="Enter Status" name="outlet_room_status">
+                        <datalist id="datalistOptions">
+                            <option value="available">
+                            <option value="booked">
+                        </datalist>
                     </div>
                     <div class="text-right">
                         <button type="submit" id="submitButton" class="btn btn-success waves-effect waves-light mr-2">Submit</button>
@@ -132,6 +116,7 @@
 @endsection
 
 @push('outlet-room')
-    <script src="{{url('admin/assets/js/pages/outlet-room.js')}}"></script>
-    <script src="{{url('admin/assets/plugins/data-tables/js/datatables.min.js')}}"></script>
+<script src="{{url('admin/assets/js/pages/outlet-room.js')}}"></script>
+<script src="{{url('admin/assets/js/pages/outlet-room-crud.js')}}"></script>
+<script src="{{url('admin/assets/plugins/data-tables/js/datatables.min.js')}}"></script>
 @endpush
