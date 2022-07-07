@@ -64,7 +64,7 @@ class OutletRoomController extends Controller
      */
     public function edit($id)
     {
-        //
+        return $this->outletRoom->edit($id);
     }
 
     /**

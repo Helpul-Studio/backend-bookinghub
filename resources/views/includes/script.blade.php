@@ -22,6 +22,11 @@
 <!-- dashboard-custom js -->
 <script src="{{url('admin/assets/js/pages/dashboard-analytics.js')}}"></script>
 
+<!-- SweetAlert js -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.19/dist/sweetalert2.all.min.js"></script> -->
+<!-- <script src="{{ url('material-pro/src/assets/libs/sweetalert2/dist/sweetalert2.all.min.js') }}"></script>
+<script src="{{ url('material-pro/src/assets/extra-libs/sweetalert2/sweet-alert.init.js') }}"></script><br> -->
+
 @stack('outlet')
 @stack('outlet-fasility')
 @stack('outlet-room')

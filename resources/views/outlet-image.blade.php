@@ -36,7 +36,7 @@
                             <div class="col-sm-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h5>HTML5 Export Button</h5>
+                                        <h5>Outlet Image</h5>
                                     </div>
                                     <div class="card-block">
                                         <p>This example demonstrates these four button types with their default options. The other examples in this section demonstrate some of the options available.</p>
@@ -105,7 +105,7 @@
                 <button type="button" class="close" data-dismiss="modal" id="closeButton" aria-hidden="true">×</button>
             </div>
             <div class="modal-body">
-                <form id="formAddOutlet" method="POST">
+                <form id="formAddOutletImage" method="POST">
                     <input type="hidden" name="id" id="id">
                     <div class="form-group">
                         <input type="text" class="form-control" id="IdOutlet" placeholder="Enter IdOutlet" name="IdOutlet">

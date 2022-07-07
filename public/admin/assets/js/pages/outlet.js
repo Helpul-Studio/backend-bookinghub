@@ -3,17 +3,6 @@ $(document).ready(function() {
     // [ Zero-configuration ] start
     $('#zero-configuration').DataTable();
 
-    // [ HTML5-Export ] start
-    $('#key-act-button').DataTable({
-        dom: 'Bfrtip',
-        buttons: [
-            'copyHtml5',
-            'excelHtml5',
-            'csvHtml5',
-            'pdfHtml5'
-        ]
-    });
-
     // [ Columns-Reorder ] start
     $('#col-reorder').DataTable({
         colReorder: true
