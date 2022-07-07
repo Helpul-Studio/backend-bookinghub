@@ -20,7 +20,7 @@
                         <li class=""><a href="{{url('/outlets')}}" class="">Outlet</a></li>
                         <li class=""><a href="{{url('/outlets-room')}}" class="">Outlet Room</a></li>
                         <li class=""><a href="{{url('/outlets-facility')}}" class="">Outlet Facility</a></li>
-                        <li class="active"><a href="{{url('/outlets-image')}}" class="">Image Outlet</a></li>
+                        <li class=""><a href="{{url('/outlets-image')}}" class="">Image Outlet</a></li>
                     </ul>
                 </li>
             </ul>

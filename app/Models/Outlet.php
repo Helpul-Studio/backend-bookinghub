@@ -21,4 +21,14 @@ class Outlet extends Model
         'instagram_link', 
         'price_outlet_per_hour'
     ];
+
+    public function outletRoom()
+    {
+        return $this->hasMany(OutletRoom::class, 'id_outlet', 'id_outlet');
+    }
+
+    public function outletFacility()
+    {
+        return $this->hasMany(OutletFacility::class, 'id_outlet', 'id_outlet');
+    }
 }

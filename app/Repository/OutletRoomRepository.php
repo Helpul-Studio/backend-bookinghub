@@ -2,13 +2,17 @@
 namespace App\Repository;
 
 use App\Interface\OutletRoomInterface;
+use App\Models\Outlet;
 use App\Models\OutletRoom;
 use Illuminate\Http\Request;
 
 class OutletRoomRepository implements OutletRoomInterface {
     public function index()
     {
-        return view('outlet-room');
+        $data = Outlet::all();
+        return view('outlet-room', [
+            'data' => $data,
+        ]);
     }
 
     public function store(Request $request)
@@ -27,7 +31,7 @@ class OutletRoomRepository implements OutletRoomInterface {
 
     public function show()
     {
-        $outletRoom = OutletRoom::all();
+        $outletRoom = OutletRoom::with('outlet')->get();
         
         return response()->json([
             'data' => $outletRoom

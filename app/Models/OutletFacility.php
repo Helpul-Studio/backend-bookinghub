@@ -16,4 +16,9 @@ class OutletFacility extends Model
         'icon_outlet_facility', 
         'description_outlet_facility'
     ];
+
+    public function outlet()
+    {
+        return $this->belongsTo(Outlet::class, 'id_outlet', 'id_outlet_facility');
+    }
 }

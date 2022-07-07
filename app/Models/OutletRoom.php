@@ -17,4 +17,9 @@ class OutletRoom extends Model
         'outlet_room_name',
         'outlet_room_status'
     ];
+
+    public function outlet()
+    {
+        return $this->belongsTo(Outlet::class, 'id_outlet', 'id_outlet');
+    }
 }

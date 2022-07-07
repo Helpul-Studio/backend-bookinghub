@@ -22,12 +22,18 @@ $(document).ready(function() {
         ],
         columns : [
             {data : "id_outlet_room"},
-            {data : "id_outlet"},
+            {data : "outlet.outlet_name"},
             {data : "outlet_room_number"},
             {data : "outlet_room_name"},
-            {data : "outlet_room_status"},
-            {data : "created_at"},
-            {data : "updated_at"},
+            {data : "outlet_room_status", 
+                render: function(data){
+                    if(data === "available"){
+                        return "Tersedia"
+                    } else {
+                        return "Sudah di booking"
+                    }
+                }
+            },
             {data : "id_outlet_room",
                 render: function(data, type, row) {
                     return `<a id="editOutletRoom" class=" btn btn-md btn-success" data-id='`+data +`' style="color: white;"> Edit</a>
