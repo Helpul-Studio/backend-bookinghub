@@ -1,9 +1,5 @@
 @extends('layouts.admin')
 
-@push('scripts')
-    <script src="{{url('admin/assets/js/pages/tbl-datatable-custom.js')}}"></script>
-@endpush
-
 @section('content')
 <!-- [ Main Content ] start -->
 <section class="pcoded-main-container">
@@ -36,20 +32,24 @@
                             <div class="col-sm-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h5>Outlet Image</h5>
+                                        <h5>Outlet</h5>
                                     </div>
                                     <div class="card-block">
-                                        <p>This example demonstrates these four button types with their default options. The other examples in this section demonstrate some of the options available.</p>
                                         <div class="text-right">
-                                            <a href="#" class="btn btn-info my-2" id="addOutletImage">Add Outlet</a>
+                                            <a href="#" class="btn btn-info my-2" id="addUser">Add Outlet</a>
                                         </div>
                                         <div class="table-responsive">
                                             <table id="key-act-button" class="display table nowrap table-striped table-hover" style="width:100%">
                                                 <thead>
                                                     <tr>
-                                                        <th>Id Image Outlet</th>
-                                                        <th>Id Outlet</th>
-                                                        <th>Photo Outlet</th>
+                                                        <th>Id User</th>
+                                                        <th>Nama</th>
+                                                        <th>Email</th>
+                                                        <th>Gender</th>
+                                                        <th>Tahun Lahir</th>
+                                                        <th>Role</th>
+                                                        <th>Nomor HP</th>
+                                                        <th>Foto Profile</th>
                                                         <th>Created At</th>
                                                         <th>Updated At</th>
                                                         <th>Action</th>
@@ -59,9 +59,14 @@
                                                 </tbody>
                                                 <tfoot>
                                                     <tr>
-                                                        <th>Id Image Outlet</th>
-                                                        <th>Id Outlet</th>
-                                                        <th>Photo Outlet</th>
+                                                        <th>Id User</th>
+                                                        <th>Nama</th>
+                                                        <th>Email</th>
+                                                        <th>Gender</th>
+                                                        <th>Tahun Lahir</th>
+                                                        <th>Role</th>
+                                                        <th>Nomor HP</th>
+                                                        <th>Foto Profile</th>
                                                         <th>Created At</th>
                                                         <th>Updated At</th>
                                                         <th>Action</th>
@@ -81,19 +86,26 @@
         </div>
     </div>
 </section>
-<div class="modal fade" id="modalOutletImage" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade" id="modalUser" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="formTitle">Form Input</h4>
-                <button type="button" class="close" data-dismiss="modal" id="closeButton" aria-hidden="true">×</button>
+                <button type="button" class="close" data-dismiss="modal" id="closeButton"
+                    aria-hidden="true">×</button>
             </div>
             <div class="modal-body">
-                <form id="formAddOutletImage" method="POST">
-                    <input type="hidden" name="id_image_outlet" id="id_image_outlet">
+                <form id="formAddUser" method="POST">
+                    <input type="hidden" name="id_user" id="id_user">
                     <div class="form-group">
-                        <input type="text" class="form-control" id="id_outlet" placeholder="Enter IdOutlet" name="id_outlet">
-                        <input type="file" class="form-control" id="photo_outlet" placeholder="Enter PhotoOutlet" name="photo_outlet"> 
+                        <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name">
+                        <input type="text" class="form-control" id="email" placeholder="Enter Email" name="email">
+                        <input type="password" class="form-control" id="password" placeholder="Enter password" name="password">
+                        <input type="text" class="form-control" id="gender" placeholder="Enter Gender" name="gender">
+                        <input type="text" class="form-control" id="date_of_birth" placeholder="Enter Tanggal Lahir" name="date_of_birth">
+                        <input type="text" class="form-control" id="role" placeholder="Enter Role" name="role">
+                        <input type="text" class="form-control" id="phone_number" placeholder="Enter Phone Number" name="phone_number">
+                        <input type="text" class="form-control" id="photo_profile" placeholder="Enter Foto Profile" name="photo_profile">
                     </div>
                     <div class="text-right">
                         <button type="submit" id="submitButton" class="btn btn-success waves-effect waves-light mr-2">Submit</button>
@@ -105,8 +117,9 @@
 </div>
 @endsection
 
-@push('outlet-image')
-    <script src="{{url('admin/assets/js/pages/outlet-image.js')}}"></script>
-    <script src="{{url('admin/assets/js/pages/outlet-image-crud.js')}}"></script>
+@push('outlet')
+    <script src="{{url('admin/assets/js/pages/user.js')}}"></script>
+    <!-- <script src="{{url('admin/assets/js/pages/user-crud.js')}}"></script> -->
+    <script src="{{url('admin/assets/js/pages/user-crud.js')}}"></script>
     <script src="{{url('admin/assets/plugins/data-tables/js/datatables.min.js')}}"></script>
 @endpush

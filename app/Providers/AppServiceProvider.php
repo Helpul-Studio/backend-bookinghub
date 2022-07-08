@@ -27,6 +27,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(OutletInterface::class, OutletRepository::class);
         $this->app->bind(OutletRoomInterface::class, OutletRoomRepository::class);
         $this->app->bind(OutletFacilityInterface::class, OutletFacilityRepository::class);
+        $this->app->bind(UserInterface::class, UserRepository::class);
     }
 
     /**

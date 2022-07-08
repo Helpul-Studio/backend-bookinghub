@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\OutletController;
 use App\Http\Controllers\Admin\OutletFasilityController;
 use App\Http\Controllers\Admin\OutletRoomController;
 use App\Http\Controllers\Admin\OutletImageController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -57,5 +58,12 @@ Route::middleware(['auth'])->group(function() {
     Route::post('/add-outlets-image', [OutletImageController::class, 'store']);
     Route::put('/update-outlets-image/{id}', [OutletImageController::class, 'update']);
     Route::delete('/delete-outlets-image/{id}', [OutletImageController::class, 'destroy']);
+
+    Route::get('/user', [UserController::class, 'index']);
+    Route::get('/data-user', [UserController::class, 'show']);
+    Route::get('/get-user/{id}', [UserController::class, 'edit']);
+    Route::post('/add-user', [UserController::class, 'store']);
+    Route::put('/update-user/{id}', [UserController::class, 'update']);
+    Route::delete('/delete-user/{id}', [UserController::class, 'destroy']);
     
 });

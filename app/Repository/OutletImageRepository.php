@@ -4,7 +4,9 @@ namespace App\Repository;
 
 use App\Interface\OutletImageInterface;
 use App\Models\ImageOutlet;
+use Illuminate\Contracts\Cache\Store;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class OutletImageRepository implements OutletImageInterface {
     public function index()
@@ -14,9 +16,26 @@ class OutletImageRepository implements OutletImageInterface {
 
     public function store(Request $request)
     {
+        // $image = new ImageOutlet();
+
+        // $data = $request->all([
+        //     'id_outlet',
+        //     'photo_outlet'
+        // ]);
+
+        // if($data){
+        //     $data['photo_outlet'] = $request->file('photo_outlet')->store('public/image', 'public');
+
+        //     $image->id_outlet = $data['id_outlet'];
+        //     $image->photo_outlet = $data['photo_outlet'];
+        //     $image->save();
+        // }
+        $storeImage = Storage::put('public/image', $request->file('photo_outlet'));
+        $storeImageUrl = Storage::url($storeImage, 'public/image');
+
         ImageOutlet::create([
             'id_outlet' => $request->id_outlet,
-            'photo_outlet' => $request->photo_outlet
+            'photo_outlet' => $storeImageUrl
         ]);
 
         return response()->json([
