@@ -47,13 +47,11 @@
                                             <table id="key-act-button" class="display table nowrap table-striped table-hover" style="width:100%">
                                                 <thead>
                                                     <tr>
-                                                        <th>Id Outlet Room</th>
+                                                        <th>Id Ruang Outlet</th>
                                                         <th>Id Outlet</th>
-                                                        <th>Outlet Room Number</th>
-                                                        <th>Outlet Room Name</th>
-                                                        <th>Outlet Room Status</th>
-                                                        <th>Created At</th>
-                                                        <th>Updated At</th>
+                                                        <th>Nomor Ruang Outlet</th>
+                                                        <th>Nama Ruang Outlet</th>
+                                                        <th>Status Ruang Outlet</th>
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
@@ -61,13 +59,11 @@
                                                 </tbody>
                                                 <tfoot>
                                                     <tr>
-                                                        <th>Id Outlet Room</th>
+                                                        <th>Id Ruang Outlet</th>
                                                         <th>Id Outlet</th>
-                                                        <th>Outlet Room Number</th>
-                                                        <th>Outlet Room Name</th>
-                                                        <th>Outlet Room Status</th>
-                                                        <th>Created At</th>
-                                                        <th>Updated At</th>
+                                                        <th>Nomor Ruang Outlet</th>
+                                                        <th>Nama Ruang Outlet</th>
+                                                        <th>Status Ruang Outlet</th>
                                                         <th>Action</th>
                                                     </tr>
                                                 </tfoot>
@@ -96,10 +92,19 @@
                 <form id="formAddOutletRoom" method="POST">
                     <input type="hidden" name="id_outlet_room" id="id_outlet_room">
                     <div class="form-group">
-                        <input type="text" class="form-control" id="id_outlet" placeholder="Enter IdOutlet" name="id_outlet">
-                        <input type="text" class="form-control" id="outlet_room_number" placeholder="Enter OutletRoomNumber" name="outlet_room_number">
-                        <input type="text" class="form-control" id="outlet_room_name" placeholder="Enter OutletRoomName" name="outlet_room_name">
-                        <input type="text" class="form-control" list="datalistOptions" id="outlet_room_status" placeholder="Enter Status" name="outlet_room_status">
+                        {{-- <input type="text" class="form-control" id="id_outlet" placeholder="Enter IdOutlet" name="id_outlet"> --}}
+                        <select name="id_outlet" id="id_outlet" class="form-control">
+                            @foreach ($data as $outlet)
+                                <option value="{{ $outlet->id_outlet}}">{{$outlet->outlet_name}}</option>
+                            @endforeach
+                        </select>
+                        <input type="text" class="form-control my-1" id="outlet_room_number" placeholder="Enter OutletRoomNumber" name="outlet_room_number">
+                        <input type="text" class="form-control my-1" id="outlet_room_name" placeholder="Enter OutletRoomName" name="outlet_room_name">
+                        {{-- <input type="text" class="form-control my-1" list="datalistOptions" id="outlet_room_status" placeholder="Enter Status" name="outlet_room_status"> --}}
+                        <select name="outlet_room_status" id="outlet_room_status" class="form-control">
+                            <option value="available">Tersedia</option>
+                            <option value="booked">Sudah di booking</option>
+                        </select>
                         <datalist id="datalistOptions">
                             <option value="available">
                             <option value="booked">
