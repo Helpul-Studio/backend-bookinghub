@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Http\Requests\RegisterUserRequest;
+use App\Http\Requests\UserRequest;
 use App\Interface\UserInterface;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -11,16 +11,17 @@ use Illuminate\Support\Facades\Hash;
 
 class UserRepository implements UserInterface{
 
-
-    public function create(Request $request)
+    public function index()
     {
-
+        return view('user');
     }
 
-    public function update($id, Request $request)
+    public function edit($id)
     {
-        
+        $user = User::where('id_user' , '=', $id)->first();
+        return response()->json($user);
     }
+
 
     public function show()
     {
@@ -28,34 +29,60 @@ class UserRepository implements UserInterface{
 
         return response()->json([
             'data' => $user
-        ], Response::HTTP_ACCEPTED);
+        ]);
+
     }
     
-    public function detail($id)
+    public function store(Request $data)
     {
+        User::create([
+            'name' => $data->name,
+            'email' => $data->email,
+            'password' => Hash::make($data->password),
+            'gender' => $data->gender,
+            'date_of_birth' => $data->date_of_birth,
+            'role' => $data->role,
+            'phone_number' => $data->phone_number,
+            'photo_profile' => $data->photo_profile,
+        ]);
 
+        return response()->json(['status' => true]);
     }
 
-    public function delete($id)
+    public function update($id, Request $request)
     {
-
-    }
-
-    public function register(Request $data)
-    {
-        if($data){
-            User::create([
-                'name' => $data['name'],
-                'email' => $data['email'],
-                'password' => Hash::make($data['password']),
-                'phone_number' => $data['phone_number'],
-                'role' => 'user'
+        if($request->password){
+            $user = User::findOrFail($id);
+            $user->update([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'gender' => $request->gender,
+                'date_of_birth' => $request->date_of_birth,
+                'role' => $request->role,
+                'phone_number' => $request->phone_number,
+                'photo_profile' => $request->photo_profile,
             ]);
         }
+        $user = User::findOrFail($id);
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'gender' => $request->gender,
+            'date_of_birth' => $request->date_of_birth,
+            'role' => $request->role,
+            'phone_number' => $request->phone_number,
+            'photo_profile' => $request->photo_profile,
+        ]);
 
-        return response()->json([
-            'message' => 'Berhasil mendaftar'   
-        ], Response::HTTP_CREATED);
+        return response()->json(['status' => true]);
+    }
+
+    public function destroy($id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
+        return response()->json(['status' => true]);
     }
 
     public function loginOtp(Request $request)
