@@ -1,9 +1,5 @@
 @extends('layouts.admin')
 
-@push('scripts')
-<script src="{{url('admin/assets/js/pages/tbl-datatable-custom.js')}}"></script>
-@endpush
-
 @section('content')
 <!-- [ Main Content ] start -->
 <section class="pcoded-main-container">
@@ -92,7 +88,6 @@
                 <form id="formAddOutletRoom" method="POST">
                     <input type="hidden" name="id_outlet_room" id="id_outlet_room">
                     <div class="form-group">
-                        {{-- <input type="text" class="form-control" id="id_outlet" placeholder="Enter IdOutlet" name="id_outlet"> --}}
                         <select name="id_outlet" id="id_outlet" class="form-control">
                             @foreach ($data as $outlet)
                                 <option value="{{ $outlet->id_outlet}}">{{$outlet->outlet_name}}</option>
@@ -100,15 +95,10 @@
                         </select>
                         <input type="text" class="form-control my-1" id="outlet_room_number" placeholder="Enter OutletRoomNumber" name="outlet_room_number">
                         <input type="text" class="form-control my-1" id="outlet_room_name" placeholder="Enter OutletRoomName" name="outlet_room_name">
-                        {{-- <input type="text" class="form-control my-1" list="datalistOptions" id="outlet_room_status" placeholder="Enter Status" name="outlet_room_status"> --}}
                         <select name="outlet_room_status" id="outlet_room_status" class="form-control">
                             <option value="available">Tersedia</option>
                             <option value="booked">Sudah di booking</option>
                         </select>
-                        <datalist id="datalistOptions">
-                            <option value="available">
-                            <option value="booked">
-                        </datalist>
                     </div>
                     <div class="text-right">
                         <button type="submit" id="submitButton" class="btn btn-success waves-effect waves-light mr-2">Submit</button>

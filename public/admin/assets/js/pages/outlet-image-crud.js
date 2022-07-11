@@ -22,7 +22,7 @@ $(document).ready(function() {
         ],
         columns : [
             {data : "id_image_outlet"},
-            {data : "id_outlet"},
+            {data : "outlet.outlet_name"},
             {data : "photo_outlet",
                 render: function(data){
                     return '<img src="' + data + '" height="50" width="50"/>';
@@ -52,7 +52,6 @@ $(document).ready(function() {
             $('#modalOutletImage').modal('show');
             $('#id_image_outlet').val(data.id_image_outlet);
             $('#id_outlet').val(data.id_outlet);
-            $('#photo_outlet').val(data.photo_outlet);
         });
     });
 
@@ -65,18 +64,19 @@ $(document).ready(function() {
         e.preventDefault();
         
         var formData = {
+            data: new FormData(document.getElementById('formAddOutletImage')),
             id_image_outlet: $('#id_image_outlet').val(),
             id_outlet: $('#id_outlet').val(),
-            photo_outlet: $('#photo_outlet').val(),
         }
 
-        console.log(formData);
-
         if(formData.id_image_outlet){
+            formData.data.append('_method', 'PUT'),
             $.ajax({
-                data: new FormData(this),
+                processData: false,
+                contentType: false,
+                data: formData.data,
                 url: "update-outlets-image/"+formData.id_image_outlet,
-                type: "PUT",
+                type: "POST",
                 dataType: "json",
                 success : function(data){
                     $('#formAddOutletImage').trigger("reset");
@@ -95,7 +95,9 @@ $(document).ready(function() {
             });
         } else {
             $.ajax({
-                data: new FormData(this),
+                processData: false,
+                contentType: false,
+                data: formData.data,
                 url: "/add-outlets-image",
                 type: "POST",
                 dataType: "json",

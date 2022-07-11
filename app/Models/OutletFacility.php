@@ -19,6 +19,6 @@ class OutletFacility extends Model
 
     public function outlet()
     {
-        return $this->belongsTo(Outlet::class, 'id_outlet', 'id_outlet_facility');
+        return $this->belongsTo(Outlet::class, 'id_outlet', 'id_outlet');
     }
 }

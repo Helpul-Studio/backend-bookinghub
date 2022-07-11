@@ -31,4 +31,9 @@ class Outlet extends Model
     {
         return $this->hasMany(OutletFacility::class, 'id_outlet', 'id_outlet');
     }
+
+    public function outletImage()
+    {
+        return $this->hasMany(ImageOutlet::class, 'id_outlet', 'id_outlet');
+    }
 }
