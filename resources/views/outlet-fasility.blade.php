@@ -90,9 +90,13 @@
                 <form id="formAddOutletFasility" method="POST">
                     <input type="hidden" name="id_outlet_facility" id="id_outlet_facility">
                     <div class="form-group">
-                        <input type="text" class="form-control" id="id_outlet" placeholder="Enter Id Outlet" name="id_outlet">
-                        <input type="file" class="form-control" id="icon_outlet_facility" placeholder="Enter icon Outlet Facility" name="icon_outlet_facility"> 
-                        <input type="text" class="form-control" id="description_outlet_facility" placeholder="Enter description Outlet Facility" name="description_outlet_facility">                        
+                        <select name="id_outlet" id="id_outlet" class="form-control">
+                            @foreach ($data as $outletFacility)
+                                <option value="{{$outletFacility->id_outlet}}">{{$outletFacility->outlet_name}}</option>
+                            @endforeach
+                        </select>
+                        <input type="file" class="form-control" id="icon_outlet_facility" placeholder="Enter icon Outlet Facility" name="icon_outlet_facility" required> 
+                        <input type="text" class="form-control" id="description_outlet_facility" placeholder="Enter description Outlet Facility" name="description_outlet_facility" required>
                     </div>
                     <div class="text-right">
                         <button type="submit" id="submitButton" class="btn btn-success waves-effect waves-light mr-2">Submit</button>

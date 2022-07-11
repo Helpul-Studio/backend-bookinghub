@@ -1,9 +1,5 @@
 @extends('layouts.admin')
 
-@push('scripts')
-    <script src="{{url('admin/assets/js/pages/tbl-datatable-custom.js')}}"></script>
-@endpush
-
 @section('content')
 <!-- [ Main Content ] start -->
 <section class="pcoded-main-container">
@@ -92,7 +88,11 @@
                 <form id="formAddOutletImage" method="POST">
                     <input type="hidden" name="id_image_outlet" id="id_image_outlet">
                     <div class="form-group">
-                        <input type="text" class="form-control" id="id_outlet" placeholder="Enter IdOutlet" name="id_outlet">
+                        <select name="id_outlet" id="id_outlet" class="form-control">
+                            @foreach ($data as $outletImage)
+                                <option value="{{$outletImage->id_outlet}}">{{$outletImage->outlet_name}}</option>
+                            @endforeach
+                        </select>
                         <input type="file" class="form-control" id="photo_outlet" placeholder="Enter PhotoOutlet" name="photo_outlet"> 
                     </div>
                     <div class="text-right">

@@ -4,32 +4,23 @@ namespace App\Repository;
 
 use App\Interface\OutletImageInterface;
 use App\Models\ImageOutlet;
+use App\Models\Outlet;
 use Illuminate\Contracts\Cache\Store;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
 class OutletImageRepository implements OutletImageInterface {
     public function index()
     {
-        return view('outlet-image');
+        $data = Outlet::all();
+        return view('outlet-image', [
+            'data' => $data
+        ]);
     }
 
     public function store(Request $request)
     {
-        // $image = new ImageOutlet();
-
-        // $data = $request->all([
-        //     'id_outlet',
-        //     'photo_outlet'
-        // ]);
-
-        // if($data){
-        //     $data['photo_outlet'] = $request->file('photo_outlet')->store('public/image', 'public');
-
-        //     $image->id_outlet = $data['id_outlet'];
-        //     $image->photo_outlet = $data['photo_outlet'];
-        //     $image->save();
-        // }
         $storeImage = Storage::put('public/image', $request->file('photo_outlet'));
         $storeImageUrl = Storage::url($storeImage, 'public/image');
 
@@ -45,7 +36,8 @@ class OutletImageRepository implements OutletImageInterface {
 
     public function show()
     {
-        $data = ImageOutlet::all();
+
+        $data = ImageOutlet::with('outlet')->get();
 
         return response()->json([
             'data' => $data
@@ -60,6 +52,29 @@ class OutletImageRepository implements OutletImageInterface {
 
     public function update($id, Request $request)
     {
+        $outletImage = ImageOutlet::findOrFail($id);
+        if(isset($request->photo_outlet)){
+            File::delete(public_path($outletImage->photo_outlet));
+
+            $storeImage = Storage::put('public/image', $request->file('photo_outlet'));
+            $storeImageUrl = Storage::url($storeImage, 'public/icon');
+
+            $outletImage->update([
+                'id_outlet' => $request->id_outlet, 
+                'photo_outlet' => $storeImageUrl,
+                'description_outlet_facility' => $request->description_outlet_facility
+            ]);
+
+        }else{
+            $outletImage->update([
+                'id_outlet' => $request->id_outlet,
+                'description_outlet_facility' => $request->description_outlet_facility
+            ]);
+        }
+        return response()->json([
+            'status' => true
+        ]);
+
         $data = ImageOutlet::findOrFail($id);
         $data->update($request->all());
         return response()->json([
@@ -69,10 +84,13 @@ class OutletImageRepository implements OutletImageInterface {
 
     public function destroy($id)
     {
-        $data = ImageOutlet::findOrFail($id);
-        $data->delete();
-        return response()->json([
-            'status' => true
-        ]);
+        $outletImage = ImageOutlet::findOrFail($id);
+        if(File::exists(public_path($outletImage->photo_outlet))){
+            File::delete(public_path($outletImage->photo_outlet));
+            $outletImage->delete();
+            return response()->json(['status' => true]);
+        }else{
+            return response()->json(['status' => false]);
+        }
     }
 }

@@ -15,4 +15,9 @@ class ImageOutlet extends Model
         'id_outlet', 
         'photo_outlet' 
     ];
+
+    public function outlet()
+    {
+        return $this->belongsTo(Outlet::class, 'id_outlet', 'id_outlet');
+    }
 }

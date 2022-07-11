@@ -25,7 +25,7 @@ class OutletFasilityRequest extends FormRequest
     {
         return [
             'id_outlet' => 'required',
-            'icon_outlet_facility' => 'required',
+            // 'icon_outlet_facility' => 'required',
             'description_outlet_facility' => 'required',
         ];
     }
