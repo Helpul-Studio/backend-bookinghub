@@ -90,6 +90,8 @@ $(document).ready(function() {
         if(formData.id_user){
             formData.data.append('_method', 'PUT'),
             $.ajax({
+                processData: false,
+                contentType: false,
                 data: formData.data,
                 url: "update-user/"+formData.id_user,
                 type: "POST",
@@ -112,7 +114,9 @@ $(document).ready(function() {
             console.log(formData);
         } else {
             $.ajax({
-                data: formData.data,
+                processData: false,
+                contentType: false,
+                data: new FormData(document.getElementById('formAddUser')),
                 url: "/add-user",
                 type: "POST",
                 dataType: "json",
@@ -131,6 +135,7 @@ $(document).ready(function() {
                     Swal.fire("Wrong request", data.responseJSON.message, "error");
                 }
             })
+            console.log(formData);
         }
     });
 
