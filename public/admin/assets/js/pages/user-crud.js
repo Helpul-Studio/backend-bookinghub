@@ -28,13 +28,17 @@ $(document).ready(function() {
             {data : "date_of_birth"},
             {data : "role"},
             {data : "phone_number"},
-            {data : "photo_profile"},
+            {data : "photo_profile",
+                render: function(data){
+                return '<img src="' + data + '" height="50" width="50"/>';
+            }
+            },
             {data : "created_at"},
             {data : "updated_at"},
             {data : "id_user",
                 render: function(data, type, row) {
-                    return `<a id="editRoom" class=" btn btn-md btn-success" data-id='`+data +`' style="color: white;"> Edit</a>
-                            <a id="deleteRoom" class=" btn btn-md btn-danger" data-id='`+data +`' style="color: white;"> Delete</a>`;
+                    return `<a id="editRoom" class=" btn btn-md btn-success" data-id='`+data +`' style="color: white;">Ubah</a>
+                            <a id="deleteRoom" class=" btn btn-md btn-danger" data-id='`+data +`' style="color: white;">Hapus</a>`;
                 }
             },
         ]
@@ -59,7 +63,6 @@ $(document).ready(function() {
             $('#date_of_birth').val(data.date_of_birth);
             $('#role').val(data.role);
             $('#phone_number').val(data.phone_number);
-            $('#photo_profile').val(data.photo_profile);
         });
     });
 
@@ -72,22 +75,24 @@ $(document).ready(function() {
         e.preventDefault();
         
         var formData = {
+            data: new FormData(document.getElementById('formAddUser')),
             id_user: $('#id_user').val(),
-            name: $('#name').val(),
-            email: $('#email').val(),
-            password: $('#password').val(),
-            gender: $('#gender').val(),
-            date_of_birth: $('#date_of_birth').val(),
-            role: $('#role').val(),
-            phone_number: $('#phone_number').val(),
-            photo_profile: $('#photo_profile').val(),
+            // name: $('#name').val(),
+            // email: $('#email').val(),
+            // password: $('#password').val(),
+            // gender: $('#gender').val(),
+            // date_of_birth: $('#date_of_birth').val(),
+            // role: $('#role').val(),
+            // phone_number: $('#phone_number').val(),
+            // photo_profile: $('#photo_profile').val(),
         }
 
         if(formData.id_user){
+            formData.data.append('_method', 'PUT'),
             $.ajax({
-                data: formData,
+                data: formData.data,
                 url: "update-user/"+formData.id_user,
-                type: "PUT",
+                type: "POST",
                 dataType: "json",
                 success : function(data){
                     $('#formAddUser').trigger("reset");
@@ -107,7 +112,7 @@ $(document).ready(function() {
             console.log(formData);
         } else {
             $.ajax({
-                data: formData,
+                data: formData.data,
                 url: "/add-user",
                 type: "POST",
                 dataType: "json",
@@ -132,6 +137,7 @@ $(document).ready(function() {
     $(document).on('click', '#deleteRoom', function(e){
         e.preventDefault();
         var id = $(this).attr('data-id');
+        console.log(id);
         Swal.fire({
             title: "You want to delete this data?",
             type: "warning",

@@ -17,4 +17,5 @@ interface UserInterface {
     public function update($id, Request $request);
 
     public function destroy($id);
+    
 }

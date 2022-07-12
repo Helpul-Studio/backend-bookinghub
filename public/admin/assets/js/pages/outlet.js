@@ -1,5 +1,18 @@
 'use strict';
 $(document).ready(function() {
+    $('#opening_hours').bootstrapMaterialDatePicker({
+        date: false,
+        format: 'HH:mm'
+    });
+
+    $('#closing_hours').bootstrapMaterialDatePicker({
+        date: false,
+        format: 'HH:mm'
+    });
+
+    $("#outlet_phone").inputmask({
+        mask: "9999-9999-9999"
+    });
     // [ Zero-configuration ] start
     $('#zero-configuration').DataTable();
 

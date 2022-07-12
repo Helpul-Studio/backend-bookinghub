@@ -30,7 +30,7 @@ class UserRequest extends FormRequest
             'date_of_birth' => 'required',
             'role' => 'required',
             'phone_number' => 'required',
-            'photo_profile' => 'required'
+            // 'photo_profile' => 'required'
         ];
     }
 }

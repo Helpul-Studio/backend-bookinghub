@@ -36,24 +36,24 @@
                                     </div>
                                     <div class="card-block">
                                         <div class="text-right">
-                                            <a href="#" class="btn btn-info my-2" id="addOutlet">Add Outlet</a>
+                                            <a href="#" class="btn btn-info my-2" id="addOutlet">Tambahkan Outlet</a>
                                         </div>
                                         <div class="table-responsive">
                                             <table id="key-act-button" class="display table nowrap table-striped table-hover" style="width:100%">
                                                 <thead>
                                                     <tr>
                                                         <th>Id Outlet</th>
-                                                        <th>Outlet Name</th>
+                                                        <th>Nama Outlet</th>
                                                         <th>Outlet Location Latitude</th>
                                                         <th>Outlet Location Longtitude</th>
-                                                        <th>Opening Hours</th>
-                                                        <th>Closing Hours</th>
-                                                        <th>Outlet Phone</th>
+                                                        <th>Jam Buka</th>
+                                                        <th>Jam Tutup</th>
+                                                        <th>No HP</th>
                                                         <th>Instagram Link</th>
-                                                        <th>Price Per-Hours</th>
+                                                        <th>Harga Per-Jam</th>
                                                         <th>Created At</th>
                                                         <th>Updated At</th>
-                                                        <th>Action</th>
+                                                        <th>Aksi</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -61,17 +61,17 @@
                                                 <tfoot>
                                                     <tr>
                                                         <th>Id Outlet</th>
-                                                        <th>Outlet Name</th>
+                                                        <th>Nama Outlet</th>
                                                         <th>Outlet Location Latitude</th>
                                                         <th>Outlet Location Longtitude</th>
-                                                        <th>Opening Hours</th>
-                                                        <th>Closing Hours</th>
-                                                        <th>Outlet Phone</th>
+                                                        <th>Jam Buka</th>
+                                                        <th>Jam Tutup</th>
+                                                        <th>No HP</th>
                                                         <th>Instagram Link</th>
-                                                        <th>Price Per-Hours</th>
+                                                        <th>Harga Per-Jam</th>
                                                         <th>Created At</th>
                                                         <th>Updated At</th>
-                                                        <th>Action</th>
+                                                        <th>Aksi</th>
                                                     </tr>
                                                 </tfoot>
                                             </table>
@@ -89,25 +89,28 @@
     </div>
 </section>
 <div class="modal fade" id="modalOutlet" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-dialog-centered  modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="formTitle">Form Input</h4>
-                <button type="button" class="close" data-dismiss="modal" id="closeButton"
-                    aria-hidden="true">×</button>
+                <h4 class="modal-title" id="formTitle">Form Outlet</h4>
+                <button type="button" class="close" data-dismiss="modal" id="closeButton" aria-hidden="true">×</button>
             </div>
             <div class="modal-body">
                 <form id="formAddOutlet" method="POST">
                     <input type="hidden" name="id_outlet" id="id_outlet">
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="outlet_name" placeholder="Enter outlet_name" name="outlet_name">
-                        <input type="text" class="form-control" id="outlet_location_latitude" placeholder="Enter Location Latitude" name="outlet_location_latitude">
-                        <input type="text" class="form-control" id="outlet_location_longitude" placeholder="Enter Location Longtitude" name="outlet_location_longitude">
-                        <input type="text" class="form-control" id="opening_hours" placeholder="Enter Opening Hours" name="opening_hours">
-                        <input type="text" class="form-control" id="closing_hours" placeholder="Enter Closing Hours" name="closing_hours">
-                        <input type="text" class="form-control" id="outlet_phone" placeholder="Enter Outlet Phone" name="outlet_phone">
-                        <input type="text" class="form-control" id="instagram_link" placeholder="Enter instagram Link" name="instagram_link">
-                        <input type="text" class="form-control" id="price_outlet_per_hour" placeholder="Enter Price Per Hours" name="price_outlet_per_hour">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <input type="text" class="form-control mb-1" id="outlet_name" placeholder="Enter outlet_name" name="outlet_name">
+                            <input type="text" class="form-control mb-1" id="outlet_location_latitude" placeholder="Enter Location Latitude" name="outlet_location_latitude">
+                            <input type="text" class="form-control mb-1" id="outlet_location_longitude" placeholder="Enter Location Longtitude" name="outlet_location_longitude">
+                            <input type="text" class="form-control mb-1" id="opening_hours" placeholder="Enter Opening Hours" name="opening_hours">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input type="text" class="form-control mb-1" id="closing_hours" placeholder="Enter Closing Hours" name="closing_hours">
+                            <input type="text" class="form-control mb-1 mob_no" id="outlet_phone" placeholder="No HP: 0811-1111-1111" name="outlet_phone" data-mask="9999-9999-9999">
+                            <input type="text" class="form-control mb-1" id="instagram_link" placeholder="Enter instagram Link" name="instagram_link">
+                            <input type="text" class="form-control mb-1" id="price_outlet_per_hour" placeholder="Enter Price Per Hours" name="price_outlet_per_hour">
+                        </div>
                     </div>
                     <div class="text-right">
                         <button type="submit" id="submitButton" class="btn btn-success waves-effect waves-light mr-2">Submit</button>
@@ -117,10 +120,11 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div>
+
 @endsection
 
 @push('outlet')
-    <script src="{{url('admin/assets/js/pages/outlet.js')}}"></script>
-    <script src="{{url('admin/assets/js/pages/outlet-crud.js')}}"></script>
-    <script src="{{url('admin/assets/plugins/data-tables/js/datatables.min.js')}}"></script>
+<script src="{{url('admin/assets/js/pages/outlet.js')}}"></script>
+<script src="{{url('admin/assets/js/pages/outlet-crud.js')}}"></script>
+<script src="{{url('admin/assets/plugins/data-tables/js/datatables.min.js')}}"></script>
 @endpush

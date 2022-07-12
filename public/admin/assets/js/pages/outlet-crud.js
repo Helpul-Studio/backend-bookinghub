@@ -34,8 +34,8 @@ $(document).ready(function() {
             {data : "updated_at"},
             {data : "id_outlet",
                 render: function(data, type, row) {
-                    return `<a id="editOutlet" class=" btn btn-md btn-success" data-id='`+data +`' style="color: white;"> Edit</a>
-                            <a id="deleteOutlet" class=" btn btn-md btn-danger" data-id='`+data +`' style="color: white;"> Delete</a>`;
+                    return `<a id="editOutlet" class=" btn btn-md btn-success" data-id='`+data +`' style="color: white;">Ubah</a>
+                            <a id="deleteOutlet" class=" btn btn-md btn-danger" data-id='`+data +`' style="color: white;">Hapus</a>`;
                 }
             },
         ]
@@ -101,6 +101,7 @@ $(document).ready(function() {
                 error : function(data){
                     console.log('Error : ', data);
                     $('#formAddOutlet').trigger("reset");
+                    $('#modalOutlet').modal('hide');
                     $('#modalOutlet').trigger("reset");
                     Swal.fire("Wrong request", data.responseJSON.message, "error");
                 }
@@ -121,6 +122,7 @@ $(document).ready(function() {
                 error : function(data){
                     console.log('Error : ', data);
                     $('#formAddOutlet').trigger("reset");
+                    $('#modalOutlet').modal('hide');
                     $('#modalOutlet').trigger("reset");
                     Swal.fire("Wrong request", data.responseJSON.message, "error");
                 }

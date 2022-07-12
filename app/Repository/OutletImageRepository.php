@@ -74,12 +74,6 @@ class OutletImageRepository implements OutletImageInterface {
         return response()->json([
             'status' => true
         ]);
-
-        $data = ImageOutlet::findOrFail($id);
-        $data->update($request->all());
-        return response()->json([
-            'status' => true
-        ]);
     }
 
     public function destroy($id)

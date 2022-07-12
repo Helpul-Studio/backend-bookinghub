@@ -14,14 +14,14 @@
     <div class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto">
             <li><a href="#!" class="full-screen" onclick="javascript:toggleFullScreen()"><i class="feather icon-maximize"></i></a></li>
-            <li class="nav-item dropdown">
+            <!-- <li class="nav-item dropdown">
                 <a class="dropdown-toggle" href="#" data-toggle="dropdown">Dropdown</a>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="#!">Action</a></li>
                     <li><a class="dropdown-item" href="#!">Another action</a></li>
                     <li><a class="dropdown-item" href="#!">Something else here</a></li>
                 </ul>
-            </li>
+            </li> -->
             <li class="nav-item">
                 <div class="main-search">
                     <div class="input-group">
@@ -98,8 +98,8 @@
                     <div class="dropdown-menu dropdown-menu-right profile-notification">
                         <div class="pro-head">
                             <img src="admin/assets/images/user/avatar-1.jpg" class="img-radius" alt="User-Profile-Image">
-                            <span>John Doe</span>
-                            <a href="{{ route('logout') }}" class="dud-logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <span>{{ Auth::user()->name }}</span>
+                            <a href="{{ __('Logout') }}" class="dud-logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 <i class="feather icon-log-out"></i>
                             </a>
                             
