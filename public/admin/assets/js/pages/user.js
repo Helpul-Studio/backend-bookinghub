@@ -1,5 +1,13 @@
 'use strict';
 $(document).ready(function() {
+    $('#date_of_birth').bootstrapMaterialDatePicker({
+        weekStart: 0,
+        time: false
+    });
+
+    $("#phone_number").inputmask({
+        mask: "9999-9999-9999"
+    });
     // [ Zero-configuration ] start
     $('#zero-configuration').DataTable();
 

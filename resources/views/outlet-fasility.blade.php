@@ -32,37 +32,36 @@
                             <div class="col-sm-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h5>Outlet Facility</h5>
+                                        <h5>Fasilitas Outlet</h5>
                                     </div>
                                     <div class="card-block">
-                                        <p>This example demonstrates these four button types with their default options. The other examples in this section demonstrate some of the options available.</p>
                                         <div class="text-right">
-                                            <a href="#" class="btn btn-info my-2" id="addOutletFacility">Add Outlet</a>
+                                            <a href="#" class="btn btn-info my-2" id="addOutletFacility">Tambahkan Fasilitas</a>
                                         </div>
                                         <div class="table-responsive">
                                             <table id="key-act-button" class="display table nowrap table-striped table-hover" style="width:100%">
                                                 <thead>
                                                     <tr>
-                                                        <th>Id Outlet Facility</th>
+                                                        <th>Id Fasilitas</th>
                                                         <th>Id Outlet</th>
-                                                        <th>Icon Outlet Facility</th>
-                                                        <th>Description Outlet Facility</th>
+                                                        <th>Icon Fasilitas</th>
+                                                        <th>Deskripsi Facility</th>
                                                         <th>Created At</th>
                                                         <th>Updated At</th>
-                                                        <th>Action</th>
+                                                        <th>Aksi</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                 </tbody>
                                                 <tfoot>
                                                     <tr>
-                                                        <th>Id Outlet Facility</th>
+                                                        <th>Id Outlet Fasilitas</th>
                                                         <th>Id Outlet</th>
-                                                        <th>Icon Outlet Facility</th>
-                                                        <th>Description Outlet Facility</th>
+                                                        <th>Icon Fasilitas</th>
+                                                        <th>Deskripsi Facility</th>
                                                         <th>Created At</th>
                                                         <th>Updated At</th>
-                                                        <th>Action</th>
+                                                        <th>Aksi</th>
                                                     </tr>
                                                 </tfoot>
                                             </table>
@@ -83,20 +82,20 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="formTitle">Form Input</h4>
+                <h4 class="modal-title" id="formTitle">Form Fasilitas</h4>
                 <button type="button" class="close" data-dismiss="modal" id="closeButton" aria-hidden="true">×</button>
             </div>
             <div class="modal-body">
                 <form id="formAddOutletFasility" method="POST">
                     <input type="hidden" name="id_outlet_facility" id="id_outlet_facility">
                     <div class="form-group">
-                        <select name="id_outlet" id="id_outlet" class="form-control">
+                        <select name="id_outlet" id="id_outlet" class="form-control mb-1">
                             @foreach ($data as $outletFacility)
                                 <option value="{{$outletFacility->id_outlet}}">{{$outletFacility->outlet_name}}</option>
                             @endforeach
                         </select>
-                        <input type="file" class="form-control" id="icon_outlet_facility" placeholder="Enter icon Outlet Facility" name="icon_outlet_facility" required> 
-                        <input type="text" class="form-control" id="description_outlet_facility" placeholder="Enter description Outlet Facility" name="description_outlet_facility" required>
+                        <input type="file" class="form-control mb-1" id="icon_outlet_facility" placeholder="Enter icon Outlet Facility" name="icon_outlet_facility" required> 
+                        <input type="text" class="form-control mb-1" id="description_outlet_facility" placeholder="Enter description Outlet Facility" name="description_outlet_facility" required>
                     </div>
                     <div class="text-right">
                         <button type="submit" id="submitButton" class="btn btn-success waves-effect waves-light mr-2">Submit</button>

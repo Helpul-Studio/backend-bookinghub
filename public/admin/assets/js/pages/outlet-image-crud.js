@@ -16,7 +16,7 @@ $(document).ready(function() {
         // ],
         processing: true,
         lengthMenu : [10,50,100],
-        ajax : "data-outlets-image",
+        ajax : "/data-outlets-image",
         columnDefs : [
             { responsivePriority: 1, targets: -1 }
         ],
@@ -32,8 +32,8 @@ $(document).ready(function() {
             {data : "updated_at"},
             {data : "id_image_outlet",
                 render: function(data, type, row) {
-                    return `<a id="editOutletImage" class=" btn btn-md btn-success" data-id='`+data +`' style="color: white;"> Edit</a>
-                            <a id="deleteOutletImage" class=" btn btn-md btn-danger" data-id='`+data +`' style="color: white;"> Delete</a>`;
+                    return `<a id="editOutletImage" class=" btn btn-md btn-success" data-id='`+data +`' style="color: white;">Ubah</a>
+                            <a id="deleteOutletImage" class=" btn btn-md btn-danger" data-id='`+data +`' style="color: white;">Hapus</a>`;
                 }
             },
         ]

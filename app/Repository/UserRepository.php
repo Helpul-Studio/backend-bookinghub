@@ -7,7 +7,9 @@ use App\Interface\UserInterface;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class UserRepository implements UserInterface{
 
@@ -35,6 +37,9 @@ class UserRepository implements UserInterface{
     
     public function store(Request $data)
     {
+        $storeImage = Storage::put('public/profile', $data->file('photo_profile'));
+        $storeImageUrl = Storage::url($storeImage, 'public/profile');
+        
         User::create([
             'name' => $data->name,
             'email' => $data->email,
@@ -43,7 +48,7 @@ class UserRepository implements UserInterface{
             'date_of_birth' => $data->date_of_birth,
             'role' => $data->role,
             'phone_number' => $data->phone_number,
-            'photo_profile' => $data->photo_profile,
+            'photo_profile' => $storeImageUrl,
         ]);
 
         return response()->json(['status' => true]);
@@ -51,38 +56,73 @@ class UserRepository implements UserInterface{
 
     public function update($id, Request $request)
     {
-        if($request->password){
-            $user = User::findOrFail($id);
-            $user->update([
-                'name' => $request->name,
-                'email' => $request->email,
-                'password' => Hash::make($request->password),
-                'gender' => $request->gender,
-                'date_of_birth' => $request->date_of_birth,
-                'role' => $request->role,
-                'phone_number' => $request->phone_number,
-                'photo_profile' => $request->photo_profile,
-            ]);
-        }
         $user = User::findOrFail($id);
-        $user->update([
-            'name' => $request->name,
-            'email' => $request->email,
-            'gender' => $request->gender,
-            'date_of_birth' => $request->date_of_birth,
-            'role' => $request->role,
-            'phone_number' => $request->phone_number,
-            'photo_profile' => $request->photo_profile,
-        ]);
+        if(isset($request->photo_profile)){
+            File::delete(public_path($user->photo_profile));
 
-        return response()->json(['status' => true]);
+            $storeImage = Storage::put('public/profile', $request->file('photo_profile'));
+            $storeImageUrl = Storage::url($storeImage, 'public/profile');
+
+            if($request->password){
+                $user->update([
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'password' => Hash::make($request->password),
+                    'gender' => $request->gender,
+                    'date_of_birth' => $request->date_of_birth,
+                    'role' => $request->role,
+                    'phone_number' => $request->phone_number,
+                    'photo_profile' => $storeImageUrl,
+                ]);
+            }else{
+                $user->update([
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'gender' => $request->gender,
+                    'date_of_birth' => $request->date_of_birth,
+                    'role' => $request->role,
+                    'phone_number' => $request->phone_number,
+                    'photo_profile' => $storeImageUrl,
+                ]);
+            }
+        }else{
+            if($request->password){
+                $user->update([
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'password' => Hash::make($request->password),
+                    'gender' => $request->gender,
+                    'date_of_birth' => $request->date_of_birth,
+                    'role' => $request->role,
+                    'phone_number' => $request->phone_number,
+                ]);
+            }else{
+                $user->update([
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'gender' => $request->gender,
+                    'date_of_birth' => $request->date_of_birth,
+                    'role' => $request->role,
+                    'phone_number' => $request->phone_number,
+                ]);
+            }
+        }
+        return response()->json([
+            'status' => true
+        ]);
     }
 
     public function destroy($id)
     {
-        $user = User::findOrFail($id);
-        $user->delete();
-        return response()->json(['status' => true]);
+        $outletImage = User::findOrFail($id);
+        if(File::exists(public_path($outletImage->photo_profile))){
+            File::delete(public_path($outletImage->photo_profile));
+            $outletImage->delete();
+            return response()->json(['status' => true]);
+        }else{
+            $outletImage->delete();
+            return response()->json(['status' => false]);
+        }
     }
 
     public function loginOtp(Request $request)

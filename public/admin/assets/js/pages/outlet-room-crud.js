@@ -36,8 +36,8 @@ $(document).ready(function() {
             },
             {data : "id_outlet_room",
                 render: function(data, type, row) {
-                    return `<a id="editOutletRoom" class=" btn btn-md btn-success" data-id='`+data +`' style="color: white;"> Edit</a>
-                            <a id="deleteOutletRoom" class=" btn btn-md btn-danger" data-id='`+data +`' style="color: white;"> Delete</a>`;
+                    return `<a id="editOutletRoom" class=" btn btn-md btn-success" data-id='`+data +`' style="color: white;">Ubah</a>
+                            <a id="deleteOutletRoom" class=" btn btn-md btn-danger" data-id='`+data +`' style="color: white;">Hapus</a>`;
                 }
             },
         ]

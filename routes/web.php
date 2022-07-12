@@ -23,7 +23,6 @@ Route::get('/', function () {
     return redirect('/login');
 });
 
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -65,5 +64,6 @@ Route::middleware(['auth'])->group(function() {
     Route::post('/add-user', [UserController::class, 'store']);
     Route::put('/update-user/{id}', [UserController::class, 'update']);
     Route::delete('/delete-user/{id}', [UserController::class, 'destroy']);
+   
     
 });

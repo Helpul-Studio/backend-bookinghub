@@ -8,3 +8,11 @@
 
 <!-- <link rel="stylesheet" href="assets/plugins/data-tables/css/datatables.min.css"> -->
 <link rel="stylesheet" href="{{url('admin/assets/plugins/data-tables/css/datatables.min.css')}}">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+<!-- material datetimepicker css -->
+<link rel="stylesheet" href="{{url('admin/assets/plugins/material-datetimepicker/css/bootstrap-material-datetimepicker.css')}} ">
+<!-- Bootstrap datetimepicker css -->
+<!-- <link rel="stylesheet" href="{{url('admin/assets/plugins/bootstrap-datetimepicker/css/bootstrap-datepicker3.min.css')}}"> -->
+<!-- <link rel="stylesheet" href="{{url('admin/assets/fonts/material/css/materialdesignicons.min.css')}}"> -->

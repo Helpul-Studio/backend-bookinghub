@@ -24,8 +24,17 @@
 
 <!-- SweetAlert js -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.19/dist/sweetalert2.all.min.js"></script> -->
-<!-- <script src="{{ url('material-pro/src/assets/libs/sweetalert2/dist/sweetalert2.all.min.js') }}"></script>
-<script src="{{ url('material-pro/src/assets/extra-libs/sweetalert2/sweet-alert.init.js') }}"></script><br> -->
+
+<!-- DateTime picker -->
+<script src="http://momentjs.com/downloads/moment-with-locales.min.js"></script>
+<script src="{{url('admin/assets/plugins/material-datetimepicker/js/bootstrap-material-datetimepicker.js')}}"></script>
+
+<!-- Input mask Js -->
+<script src="{{url('admin/assets/plugins/inputmask/js/inputmask.min.js')}}"></script>
+<script src="{{url('admin/assets/plugins/inputmask/js/jquery.inputmask.min.js')}}"></script>
+<script src="{{url('admin/assets/plugins/inputmask/js/autoNumeric.js')}}"></script>
+<!-- form-picker-custom Js -->
+<script src="{{url('admin/assets/js/pages/form-masking-custom.js')}}"></script>
 
 @stack('outlet')
 @stack('outlet-fasility')

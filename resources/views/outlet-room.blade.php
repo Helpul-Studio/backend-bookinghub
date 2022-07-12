@@ -32,23 +32,22 @@
                             <div class="col-sm-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h5>OutletRoom</h5>
+                                        <h5>Ruangan</h5>
                                     </div>
-                                    <div class="card-block">
-                                        <p>This example demonstrates these four button types with their default options. The other examples in this section demonstrate some of the options available.</p>
+                                    <div class="card-block">                                        
                                         <div class="text-right">
-                                            <a href="#" class="btn btn-info my-2" id="addOutletRoom">Add Outlet Room</a>
+                                            <a href="#" class="btn btn-info my-2" id="addOutletRoom">Tambahkan Ruangan</a>
                                         </div>
                                         <div class="table-responsive">
                                             <table id="key-act-button" class="display table nowrap table-striped table-hover" style="width:100%">
                                                 <thead>
                                                     <tr>
-                                                        <th>Id Ruang Outlet</th>
+                                                        <th>Id Ruangan</th>
                                                         <th>Id Outlet</th>
                                                         <th>Nomor Ruang Outlet</th>
                                                         <th>Nama Ruang Outlet</th>
                                                         <th>Status Ruang Outlet</th>
-                                                        <th>Action</th>
+                                                        <th>Aksi</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -60,7 +59,7 @@
                                                         <th>Nomor Ruang Outlet</th>
                                                         <th>Nama Ruang Outlet</th>
                                                         <th>Status Ruang Outlet</th>
-                                                        <th>Action</th>
+                                                        <th>Aksi</th>
                                                     </tr>
                                                 </tfoot>
                                             </table>
@@ -81,20 +80,20 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="formTitle">Form Input</h4>
+                <h4 class="modal-title" id="formTitle">Form Ruangan</h4>
                 <button type="button" class="close" data-dismiss="modal" id="closeButton" aria-hidden="true">×</button>
             </div>
             <div class="modal-body">
                 <form id="formAddOutletRoom" method="POST">
                     <input type="hidden" name="id_outlet_room" id="id_outlet_room">
                     <div class="form-group">
-                        <select name="id_outlet" id="id_outlet" class="form-control">
+                        <select name="id_outlet" id="id_outlet" class="form-control mb-1">
                             @foreach ($data as $outlet)
                                 <option value="{{ $outlet->id_outlet}}">{{$outlet->outlet_name}}</option>
                             @endforeach
                         </select>
-                        <input type="text" class="form-control my-1" id="outlet_room_number" placeholder="Enter OutletRoomNumber" name="outlet_room_number">
-                        <input type="text" class="form-control my-1" id="outlet_room_name" placeholder="Enter OutletRoomName" name="outlet_room_name">
+                        <input type="text" class="form-control mb-1" id="outlet_room_number" placeholder="Enter OutletRoomNumber" name="outlet_room_number">
+                        <input type="text" class="form-control mb-1" id="outlet_room_name" placeholder="Enter OutletRoomName" name="outlet_room_name">
                         <select name="outlet_room_status" id="outlet_room_status" class="form-control">
                             <option value="available">Tersedia</option>
                             <option value="booked">Sudah di booking</option>
