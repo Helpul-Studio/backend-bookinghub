@@ -131,6 +131,7 @@ class ComposerStaticInitf6634983848b5df696bf79581d6e7423
         'M' => 
         array (
             'Monolog\\' => 8,
+            'Midtrans\\' => 9,
         ),
         'L' => 
         array (
@@ -411,6 +412,10 @@ class ComposerStaticInitf6634983848b5df696bf79581d6e7423
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
         ),
+        'Midtrans\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/midtrans/midtrans-php/Midtrans',
+        ),
         'League\\MimeTypeDetection\\' => 
         array (
             0 => __DIR__ . '/..' . '/league/mime-type-detection/src',
@@ -565,7 +570,8 @@ class ComposerStaticInitf6634983848b5df696bf79581d6e7423
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\API\\V1\\AuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/V1/AuthController.php',
-        'App\\Http\\Controllers\\API\\V1\\OutletRoomController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/V1/OutletRoomController.php',
+        'App\\Http\\Controllers\\API\\V1\\CheckoutController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/V1/CheckoutController.php',
+        'App\\Http\\Controllers\\API\\V1\\OutletController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/V1/OutletController.php',
         'App\\Http\\Controllers\\Admin\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/DashboardController.php',
         'App\\Http\\Controllers\\Admin\\OutletController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/OutletController.php',
         'App\\Http\\Controllers\\Admin\\OutletFasilityController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/OutletFasilityController.php',
@@ -604,6 +610,7 @@ class ComposerStaticInitf6634983848b5df696bf79581d6e7423
         'App\\Models\\ImageOutlet' => __DIR__ . '/../..' . '/app/Models/ImageOutlet.php',
         'App\\Models\\Outlet' => __DIR__ . '/../..' . '/app/Models/Outlet.php',
         'App\\Models\\OutletFacility' => __DIR__ . '/../..' . '/app/Models/OutletFacility.php',
+        'App\\Models\\SnapMidtrans' => __DIR__ . '/../..' . '/app/Models/SnapMidtrans.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
@@ -3275,6 +3282,14 @@ class ComposerStaticInitf6634983848b5df696bf79581d6e7423
         'League\\MimeTypeDetection\\GeneratedExtensionToMimeTypeMap' => __DIR__ . '/..' . '/league/mime-type-detection/src/GeneratedExtensionToMimeTypeMap.php',
         'League\\MimeTypeDetection\\MimeTypeDetector' => __DIR__ . '/..' . '/league/mime-type-detection/src/MimeTypeDetector.php',
         'League\\MimeTypeDetection\\OverridingExtensionToMimeTypeMap' => __DIR__ . '/..' . '/league/mime-type-detection/src/OverridingExtensionToMimeTypeMap.php',
+        'Midtrans\\ApiRequestor' => __DIR__ . '/..' . '/midtrans/midtrans-php/Midtrans/ApiRequestor.php',
+        'Midtrans\\Config' => __DIR__ . '/..' . '/midtrans/midtrans-php/Midtrans/Config.php',
+        'Midtrans\\CoreApi' => __DIR__ . '/..' . '/midtrans/midtrans-php/Midtrans/CoreApi.php',
+        'Midtrans\\Notification' => __DIR__ . '/..' . '/midtrans/midtrans-php/Midtrans/Notification.php',
+        'Midtrans\\Sanitizer' => __DIR__ . '/..' . '/midtrans/midtrans-php/Midtrans/Sanitizer.php',
+        'Midtrans\\Snap' => __DIR__ . '/..' . '/midtrans/midtrans-php/Midtrans/Snap.php',
+        'Midtrans\\SnapApiRequestor' => __DIR__ . '/..' . '/midtrans/midtrans-php/Midtrans/SnapApiRequestor.php',
+        'Midtrans\\Transaction' => __DIR__ . '/..' . '/midtrans/midtrans-php/Midtrans/Transaction.php',
         'Mockery' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery.php',
         'Mockery\\Adapter\\Phpunit\\MockeryPHPUnitIntegration' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryPHPUnitIntegration.php',
         'Mockery\\Adapter\\Phpunit\\MockeryPHPUnitIntegrationAssertPostConditions' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryPHPUnitIntegrationAssertPostConditions.php',

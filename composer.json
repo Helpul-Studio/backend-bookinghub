@@ -12,6 +12,7 @@
         "laravel/sanctum": "^2.15",
         "laravel/tinker": "^2.7",
         "laravel/ui": "^3.4",
+        "midtrans/midtrans-php": "^2.5",
         "seshac/otp-generator": "^0.0.7"
     },
     "require-dev": {

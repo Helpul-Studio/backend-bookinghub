@@ -31,5 +31,10 @@ Route::middleware(['auth:sanctum'])->group(function(){
     Route::get('/profile', [\App\Http\Controllers\API\V1\AuthController::class, 'show']);
     Route::put('/update-profile', [\App\Http\Controllers\API\V1\AuthController::class, 'update']);
     Route::post('/logout', [\App\Http\Controllers\API\V1\AuthController::class, 'logout']);
+
+    Route::get('/checkout-data', [App\Http\Controllers\API\V1\CheckoutController::class, 'index']);
+    Route::post('/checkout', [App\Http\Controllers\API\V1\CheckoutController::class, 'store']);
+    Route::get('/checkout/{id}', [\App\Http\Controllers\API\V1\CheckoutController::class, 'show']);
+
 });
 
