@@ -4,25 +4,42 @@ namespace App\Http\Controllers\API\V1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterUserRequest;
-use App\Interface\UserInterface;
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Laravel\Ui\Presets\React;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Seshac\Otp\Otp;
 
 class AuthController extends Controller
 {
-    public $user;
-    public function __construct(UserInterface $user)
-    {
-        $this->user = $user;
-    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function login(Request $request)
     {
-        //
+        $user = User::where('email', $request->email)->first();
+
+        if(!$user){
+            return response()->json([
+                'message' => 'Email salah'
+            ], Response::HTTP_BAD_REQUEST);
+        } else if ($user->role == 'admin'){
+            return response()->json([
+                'message' => 'anda bukan pelanggan'
+            ]);
+        }
+
+        $token = $user->createToken('auth_token')->plainTextToken;
+
+        return response()->json([
+            'message' => 'Berhasil login',
+            'token' => $token
+        ], Response::HTTP_ACCEPTED);
+        
     }
 
     /**
@@ -30,26 +47,24 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function register(RegisterUserRequest $request)
     {
-        
+        if($request){
+            User::create([
+                'name' => $request['name'],
+                'email' => $request['email'],
+                'password' => Hash::make($request['password']),
+                'gender' => $request['gender'],
+                'date_of_birth' => Carbon::parse($request['date_of_birth'])->format('Y/m/d'),
+                'role' => 'user'
+            ]);
+        }
+
+        return response()->json([
+            'message' => 'Berhasil mendaftar'
+        ],Response::HTTP_OK);
     }
 
-
-    public function register(RegisterUserRequest $data)
-    {
-        return $this->user->register($data);
-    }
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
     /**
      * Display the specified resource.
@@ -59,18 +74,11 @@ class AuthController extends Controller
      */
     public function show()
     {
-        return $this->user->show();
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        $user = Auth::user()->id_user;
+        $dataUser = User::where('id_user', '=', $user)->get();
+        return response()->json([
+            'data' => $dataUser
+        ], Response::HTTP_OK);
     }
 
     /**
@@ -80,9 +88,34 @@ class AuthController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(RegisterUserRequest $request)
     {
-        //
+        $user = Auth::user()->id_user;
+
+        $userData = User::where('id_user', '=', $user)->first();
+
+        if(isset($request['password'])){
+            $userData->update([
+                'name' => $request['name'],
+                'email' => $request['email'],
+                'password' => $request['password'],
+                'gender' => $request['gender'],
+                'date_of_birth' => Carbon::parse($request['date_of_birth'])->format('Y/m/d'),
+            ]);
+            return response()->json([
+                'message' => 'Data profil berhasil diubah'
+            ], Response::HTTP_ACCEPTED);
+        } else {
+            $userData->update([
+                'name' => $request['name'],
+                'email' => $request['email'],
+                'gender' => $request['gender'],
+                'date_of_birth' => Carbon::parse($request['date_of_birth'])->format('Y/m/d'),
+            ]);
+            return response()->json([
+                'message' => 'Data profil berhasil diubah'
+            ], Response::HTTP_ACCEPTED);
+        }
     }
 
     /**
@@ -91,8 +124,29 @@ class AuthController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function logout(Request $request)
     {
-        //
+        $user = $request->user();
+        $user->currentAccessToken()->delete();
+
+        return response()->json([
+            'message' => 'berhasil logout'
+        ]);
+    }
+
+    public function forgotPassword(Request $request)
+    {
+        $data = $request->validate([
+            'email' => 'required'
+        ]);
+
+        $validUser = User::where('email', '=', $data['email'])->first();
+        if(!$validUser){
+            return response()->json([
+                'message' => 'Email kamu tidak terdaftar'
+            ], Response::HTTP_OK); 
+        }
+
+
     }
 }

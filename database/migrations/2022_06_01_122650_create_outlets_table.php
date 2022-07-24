@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('outlets', function (Blueprint $table) {
             $table->bigIncrements('id_outlet');
             $table->string('outlet_name');
-            $table->string('outlet_location_latitude');
-            $table->string('outlet_location_longitude');
+            // $table->string('outlet_location_latitude');
+            // $table->string('outlet_location_longitude');
             $table->time('opening_hours');
             $table->time('closing_hours');
             $table->string('outlet_phone');

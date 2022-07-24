@@ -26,7 +26,6 @@ class User extends Authenticatable
         'gender', 
         'date_of_birth', 
         'role', 
-        'phone_number', 
         'photo_profile'
 
         //nullabel data is gender, date_of_birth, photo_profile

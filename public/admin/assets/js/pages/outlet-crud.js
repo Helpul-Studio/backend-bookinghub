@@ -23,8 +23,6 @@ $(document).ready(function() {
         columns : [
             {data : "id_outlet"},
             {data : "outlet_name"},
-            {data : "outlet_location_latitude"},
-            {data : "outlet_location_longitude"},
             {data : "opening_hours"},
             {data : "closing_hours"},
             {data : "outlet_phone"},

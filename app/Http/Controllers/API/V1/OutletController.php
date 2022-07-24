@@ -3,17 +3,12 @@
 namespace App\Http\Controllers\API\V1;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\OutletRoomRequest;
-use App\Interface\OutletRoomInterface;
+use App\Models\Outlet;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
-
-class OutletRoomController extends Controller
+class OutletController extends Controller
 {
-    public $outletRoom;
-    public function __construct(OutletRoomInterface $outletRoom)
-    {
-        $this->outletRoom = $outletRoom;
-    }
     /**
      * Display a listing of the resource.
      *
@@ -21,17 +16,10 @@ class OutletRoomController extends Controller
      */
     public function index()
     {
-        return $this->outletRoom->index();
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $outlet = Outlet::with('outletFacility', 'outletImage')->get();
+        return response()->json([
+            'data' => $outlet
+        ], Response::HTTP_OK);
     }
 
     /**
@@ -40,9 +28,9 @@ class OutletRoomController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(OutletRoomRequest $request)
+    public function store(Request $request)
     {
-        return $this->outletRoom->store($request);
+        //
     }
 
     /**
@@ -53,18 +41,10 @@ class OutletRoomController extends Controller
      */
     public function show($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        $outlet = Outlet::where('id_outlet', '=', $id)->with('outletFacility', 'outletImage')->first();
+        return response()->json([
+            'data' => $outlet
+        ], Response::HTTP_OK);
     }
 
     /**
@@ -74,9 +54,9 @@ class OutletRoomController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update($id, OutletRoomRequest $request)
+    public function update(Request $request, $id)
     {
-        return $this->outletRoom->update($id, $request);
+        //
     }
 
     /**
@@ -87,6 +67,6 @@ class OutletRoomController extends Controller
      */
     public function destroy($id)
     {
-        return $this->outletRoom->destroy($id);
+        //
     }
 }

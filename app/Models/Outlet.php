@@ -13,8 +13,8 @@ class Outlet extends Model
 
     protected $fillable = [
         'outlet_name',
-        'outlet_location_longitude', 
-        'outlet_location_latitude', 
+        // 'outlet_location_longitude', 
+        // 'outlet_location_latitude', 
         'opening_hours',
         'closing_hours', 
         'outlet_phone', 
@@ -22,10 +22,6 @@ class Outlet extends Model
         'price_outlet_per_hour'
     ];
 
-    public function outletRoom()
-    {
-        return $this->hasMany(OutletRoom::class, 'id_outlet', 'id_outlet');
-    }
 
     public function outletFacility()
     {

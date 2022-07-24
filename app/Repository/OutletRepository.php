@@ -16,8 +16,8 @@ class OutletRepository implements OutletInterface {
     {
         Outlet::create([
             'outlet_name' => $request->outlet_name,
-            'outlet_location_latitude' => $request->outlet_location_latitude,
-            'outlet_location_longitude' => $request->outlet_location_longitude,
+            // 'outlet_location_latitude' => $request->outlet_location_latitude,
+            // 'outlet_location_longitude' => $request->outlet_location_longitude,
             'opening_hours' => $request->opening_hours,
             'closing_hours' => $request->closing_hours,
             'outlet_phone' => $request->outlet_phone,

@@ -16,9 +16,7 @@ class OutletSeeder extends Seeder
     public function run()
     {
         DB::table('outlets')->insert([
-            'outlet_name' => 'AbdulKaroke',
-            'outlet_location_latitude' => '-6.200000',
-            'outlet_location_longitude' => '106.816666',
+            'outlet_name' => 'Happy Puppy Klandasan',
             'opening_hours' => '09:00',
             'closing_hours' => '12:00',
             'outlet_phone' => '08123456789',

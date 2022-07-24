@@ -44,8 +44,6 @@
                                                     <tr>
                                                         <th>Id Outlet</th>
                                                         <th>Nama Outlet</th>
-                                                        <th>Outlet Location Latitude</th>
-                                                        <th>Outlet Location Longtitude</th>
                                                         <th>Jam Buka</th>
                                                         <th>Jam Tutup</th>
                                                         <th>No HP</th>
@@ -62,8 +60,6 @@
                                                     <tr>
                                                         <th>Id Outlet</th>
                                                         <th>Nama Outlet</th>
-                                                        <th>Outlet Location Latitude</th>
-                                                        <th>Outlet Location Longtitude</th>
                                                         <th>Jam Buka</th>
                                                         <th>Jam Tutup</th>
                                                         <th>No HP</th>
@@ -101,8 +97,6 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <input type="text" class="form-control mb-1" id="outlet_name" placeholder="Enter outlet_name" name="outlet_name">
-                            <input type="text" class="form-control mb-1" id="outlet_location_latitude" placeholder="Enter Location Latitude" name="outlet_location_latitude">
-                            <input type="text" class="form-control mb-1" id="outlet_location_longitude" placeholder="Enter Location Longtitude" name="outlet_location_longitude">
                             <input type="text" class="form-control mb-1" id="opening_hours" placeholder="Enter Opening Hours" name="opening_hours">
                         </div>
                         <div class="form-group col-md-6">

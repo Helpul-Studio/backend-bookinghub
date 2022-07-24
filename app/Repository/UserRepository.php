@@ -27,7 +27,7 @@ class UserRepository implements UserInterface{
 
     public function show()
     {
-        $user = User::all();
+        $user = User::where('role', '!=', 'admin')->get();
 
         return response()->json([
             'data' => $user
@@ -131,6 +131,11 @@ class UserRepository implements UserInterface{
     }
 
     public function login()
+    {
+        
+    }
+
+    public function register(Request $request)
     {
         
     }
