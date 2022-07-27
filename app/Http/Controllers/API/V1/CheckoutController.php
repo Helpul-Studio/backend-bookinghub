@@ -73,7 +73,7 @@ class CheckoutController extends Controller
                     'gross_amount' => $outlet->price_outlet_per_hour
                 ],
                 'customer_details' => [
-                    'email' => 'muhammadkharismam@gmail.com',
+                    'email' => $userData->email,
                 ],
             ];
 
