@@ -19,4 +19,9 @@ class Booking extends Model
     {
         return $this->hasOne(SnapMidtrans::class, 'id_booking', 'id_booking');
     }
+
+    public function outlet()
+    {
+        return $this->belongsTo(Outlet::class, 'id_outlet', 'id_outlet');
+    }
 }

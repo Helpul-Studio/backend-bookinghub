@@ -32,4 +32,9 @@ class Outlet extends Model
     {
         return $this->hasMany(ImageOutlet::class, 'id_outlet', 'id_outlet');
     }
+
+    public function booking()
+    {
+        return $this->hasMany(Booking::class, 'id_outlet', 'id_outlet');
+    }
 }

@@ -22,7 +22,7 @@ class CheckoutController extends Controller
     public function index()
     {
         $user = Auth::user()->id_user;
-        $booking = Booking::with('snapMidtrans')->where('id_user', '=', $user)->get();
+        $booking = Booking::with('snapMidtrans', 'outlet')->where('id_user', '=', $user)->get();
         return response()->json([
             'data' => $booking
         ]);
@@ -105,7 +105,7 @@ class CheckoutController extends Controller
      */
     public function show($id)
     {
-        $booking = Booking::with('snapMidtrans')->where('id_booking', '=', $id)->first();
+        $booking = Booking::with('snapMidtrans', 'outlet')->where('id_booking', '=', $id)->first();
         return response()->json([
             'data' => $booking
         ]);
