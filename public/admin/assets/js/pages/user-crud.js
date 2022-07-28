@@ -27,16 +27,6 @@ $(document).ready(function() {
             {data : "gender"},
             {data : "date_of_birth"},
             {data : "role"},
-            {data : "phone_number"},
-            {data : "photo_profile",
-                render: function(data){
-                if(data == null){
-                    return 'tidak ada foto';
-                } else {
-                    return '<img src="' + data + '" height="50" width="50"/>';
-                }
-            }
-            },
             {data : "created_at"},
             {data : "updated_at"},
             {data : "id_user",

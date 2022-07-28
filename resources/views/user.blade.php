@@ -48,8 +48,6 @@
                                                         <th>Gender</th>
                                                         <th>Tahun Lahir</th>
                                                         <th>Role</th>
-                                                        <th>Nomor HP</th>
-                                                        <th>Foto Profile</th>
                                                         <th>Created At</th>
                                                         <th>Updated At</th>
                                                         <th>Aksi</th>
@@ -65,8 +63,6 @@
                                                         <th>Gender</th>
                                                         <th>Tahun Lahir</th>
                                                         <th>Role</th>
-                                                        <th>Nomor HP</th>
-                                                        <th>Foto Profile</th>
                                                         <th>Created At</th>
                                                         <th>Updated At</th>
                                                         <th>Aksi</th>
