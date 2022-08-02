@@ -88,7 +88,7 @@ class CheckoutController extends Controller
                 ]);
 
                 return response()->json([
-                    'data' => $snapToken
+                    'data' => $transactionCode
                 ]);
 
             } catch (\Exception $e) {
