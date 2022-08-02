@@ -89,7 +89,7 @@ class CheckoutController extends Controller
 
                 return response()->json([
                     'data' => $transactionCode,
-                ]);
+                ], 200);
 
             } catch (\Exception $e) {
                 dd($e);
