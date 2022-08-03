@@ -16,9 +16,9 @@ class OutletController extends Controller
      */
     public function index()
     {
-        $outlet = Outlet::with('outletFacility', 'outletImage')->get();
+        $outlets = Outlet::with('outletFacility', 'outletImage')->get();
         return response()->json([
-            'data' => $outlet
+            'data' => $outlets
         ], Response::HTTP_OK);
     }
 
