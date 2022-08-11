@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendOtpMail;
 use Seshac\Otp\Otp;
 
 class AuthController extends Controller
@@ -23,23 +25,28 @@ class AuthController extends Controller
     {
         $user = User::where('email', $request->email)->first();
 
-        if(!$user){
+        if($user->hasVerifiedEmail()){
+            if(!$user){
+                return response()->json([
+                    'message' => 'Email salah'
+                ], Response::HTTP_BAD_REQUEST);
+            } else if ($user->role == 'admin'){
+                return response()->json([
+                    'message' => 'anda bukan pelanggan'
+                ]);
+            }
+    
+            $token = $user->createToken('auth_token')->plainTextToken;
+    
             return response()->json([
-                'message' => 'Email salah'
-            ], Response::HTTP_BAD_REQUEST);
-        } else if ($user->role == 'admin'){
+                'message' => 'Berhasil login',
+                'token' => $token
+            ], Response::HTTP_ACCEPTED);
+        } else {
             return response()->json([
-                'message' => 'anda bukan pelanggan'
-            ]);
+                'message' => 'Email tidak valid / belum terverifikasi'
+            ], 404);
         }
-
-        $token = $user->createToken('auth_token')->plainTextToken;
-
-        return response()->json([
-            'message' => 'Berhasil login',
-            'token' => $token
-        ], Response::HTTP_ACCEPTED);
-        
     }
 
     /**
@@ -49,16 +56,34 @@ class AuthController extends Controller
      */
     public function register(RegisterUserRequest $request)
     {
+        $validation = $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required'
+        ]);
+
+
         if($request){
             User::create([
                 'name' => $request['name'],
                 'email' => $request['email'],
                 'password' => Hash::make($request['password']),
-                'gender' => $request['gender'],
-                'date_of_birth' => Carbon::parse($request['date_of_birth'])->format('Y/m/d'),
                 'role' => 'user'
             ]);
         }
+
+        $otp = Otp::setValidity(1)->setLength(6)->setMaximumOtpsAllowed(3)->setOnlyDigits(false)->generate($validation['email']);
+
+        $data = [
+            'data' => $otp->token
+        ];
+
+
+        Mail::to($validation['email'])->send(new SendOtpMail($data));
+
+        return response()->json([
+            'message' => 'Berhasil Mendaftar silahkan masukkan otp untuk verifikasi'
+        ], Response::HTTP_CREATED);
 
         return response()->json([
             'message' => 'Berhasil mendaftar'

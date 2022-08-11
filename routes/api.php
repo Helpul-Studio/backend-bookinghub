@@ -23,6 +23,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/register-user', [\App\Http\Controllers\API\V1\AuthController::class, 'register']);
 Route::post('/login', [\App\Http\Controllers\API\V1\AuthController::class, 'login']);
+Route::post('/verify-email', [App\Http\Controllers\API\V1\VerifycationController::class, 'verifiedEmail']);
+Route::post('/send-otp', [App\Http\Controllers\API\V1\VerifycationController::class, 'sendOtp']);
+Route::post('/reset-password', [App\Http\Controllers\API\V1\VerifycationController::class, 'resetPassword']);
 
 Route::get('/outlet-data', [\App\Http\Controllers\API\V1\OutletController::class, 'index']);
 Route::get('/outlet-data/{id}', [\App\Http\Controllers\API\V1\OutletController::class, 'show']);
