@@ -21,7 +21,6 @@
                     <ul class="pcoded-submenu">
                         <li class=""><a href="{{url('/dashboard')}}" class="">Dashboard</a></li>
                         <li class=""><a href="{{url('/outlets')}}" class="">Outlet</a></li>
-                        <li class=""><a href="{{url('/outlets-facility')}}" class="">Outlet Facility</a></li>
                         <li class=""><a href="{{url('/outlets-image')}}" class="">Image Outlet</a></li>
                         <li class=""><a href="{{url('/user')}}" class="">User</a></li>
                     </ul>

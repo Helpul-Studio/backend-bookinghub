@@ -25,8 +25,6 @@ class OutletRequest extends FormRequest
     {
         return [
             'outlet_name' => 'required',
-            'outlet_location_latitude' => 'required',
-            'outlet_location_longitude' => 'required',
             'opening_hours' => 'required',
             'closing_hours' => 'required',
             'outlet_phone' => 'required',
