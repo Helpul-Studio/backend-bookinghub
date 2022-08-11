@@ -50,6 +50,7 @@ $(document).ready(function() {
         var id = $(this).attr("data-id");
         $.get('/get-outlets/'+id, function(data){
             $('#modalOutlet').modal('show');
+            $('#id_outlet').val(data.id_outlet);
             $('#outlet_name').val(data.outlet_name);
             $('#outlet_location_latitude').val(data.outlet_location_latitude);
             $('#outlet_location_longitude').val(data.outlet_location_longitude);
