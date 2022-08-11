@@ -52,8 +52,6 @@ $(document).ready(function() {
             $('#modalOutlet').modal('show');
             $('#id_outlet').val(data.id_outlet);
             $('#outlet_name').val(data.outlet_name);
-            $('#outlet_location_latitude').val(data.outlet_location_latitude);
-            $('#outlet_location_longitude').val(data.outlet_location_longitude);
             $('#opening_hours').val(data.opening_hours);
             $('#closing_hours').val(data.closing_hours);
             $('#outlet_phone').val(data.outlet_phone);
