@@ -59,6 +59,8 @@ $(document).ready(function() {
             $('#outlet_phone').val(data.outlet_phone);
             $('#instagram_link').val(data.instagram_link);
             $('#price_outlet_per_hour').val(data.price_outlet_per_hour);
+
+            console.log(data);
         });
     });
 
